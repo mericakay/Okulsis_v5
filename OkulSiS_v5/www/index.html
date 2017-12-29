@@ -10,7 +10,8 @@
     <script>
         function calc() {
             var tchatirla = "";
-            if (document.getElementById('xxx').checked) {
+            if (document.getElementById('test2').checked) {
+               
                 tchatirla = $("#name").val();
                 localStorage.setItem("tchatirla", tchatirla);
                
@@ -39,7 +40,8 @@
             <input class="formcontrol" id="name" name="name" type="number" min="0" max="11" onKeyPress="if(this.value.length==11) return false;" placeholder="TC Kimlik No">
             <input class="formcontrol" id="password" name="password" type="password" placeholder="Şifre">
             <input class="testbutton" type="button" id="button1" value="GİRİŞ" />
-            <input type="checkbox" id="xxx" name="xxx" onclick="calc();" /><label>Beni Hatırla..</label>
+            <input type="checkbox" id="test2" name="xxx" onclick="calc();" /><label for="test2">Beni Hatırla..</label>
+
             <p>.</p>
         </form>
     </div>
