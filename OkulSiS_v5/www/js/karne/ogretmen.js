@@ -102,7 +102,7 @@ function load() {
                             $("#sube").on('change', function () {
                                 $("#example td").remove();;
                                 $.ajax({
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + ogrenciID + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {

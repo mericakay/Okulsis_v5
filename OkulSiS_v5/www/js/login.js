@@ -2,9 +2,10 @@
     //  localStorage.clear();
 
     var lid = 647;
-    localStorage.setItem("lid", lid);
+   
     var tchatirla = localStorage.getItem("tchatirla");
     localStorage.clear();
+    localStorage.setItem("lid", lid);
     try {
         $.ajax({
 

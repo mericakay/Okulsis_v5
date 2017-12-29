@@ -24,7 +24,8 @@ function load() {
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
-  
+    var brans = localStorage.getItem("brans");
+    alert(brans);
     var cid = localStorage.getItem("cid");
     document.getElementsByTagName("P")[0].innerHTML = okuladi  + kisiadi;
   //  alert(ip);
