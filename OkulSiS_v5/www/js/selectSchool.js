@@ -29,9 +29,12 @@
             var gelenip = "";
             var okullogo = "";
             var brans = "";
+            var kisilogo = "";
+            var okuladikisa = "";
             $('#selectSchool').empty();
             for (var j = 0; j < data.length; j++) {
-                 text = data[j].OkulAdi;
+                text = data[j].OkulAdi;
+                okuladikisa = data[j].OkulAdiKisa;
                  okulid = data[j].OkulID;
                  dersyiliid = data[j].DersYiliID;
                  kurumid = data[j].KurumID;
@@ -44,10 +47,12 @@
                  rolid = data[j].RolID;
                  okullogo = data[j].OkulLogo;
                  brans = data[j].brans;
-                 alert(brans);
+                 kisilogo = data[j].defaultFotoURL;
+                 localStorage.setItem("kisilogo", kisilogo);
+               //  alert(brans);
                
 
-                 $('#selectSchool').append("<option data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
+                 $('#selectSchool').append("<option  data-okuladikis=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
           
             }
             $("#selectSchool").on('change', function () {
@@ -63,6 +68,7 @@
                 var didlist = document.getElementById("proxylist");
                 var kisilist = document.getElementById("proxylist");
                 var branslist = document.getElementById("proxylist");
+                var okuladikisalist = document.getElementById("proxylist");
                 did = didlist.getAttribute("data-did");
                 ip = proxylist.getAttribute("data-proxy");
                 cid = cidlist.getAttribute("data-cid");
@@ -71,6 +77,7 @@
                 okulid = dersyiliidlist.getAttribute("data-okulid");
                 egitimyiliid = egitimyiliidlist.getAttribute("data-egitimyiliid");
                 brans = branslist.getAttribute("data-brans");
+                okuladikisa = okuladikisalist.getAttribute("data-okuladikisa");
               
             
                // alert(okulid);
@@ -85,6 +92,7 @@
                 localStorage.setItem("okulid", $(this).find('option:selected').attr('data-okulid'));
                 localStorage.setItem("egitimyiliid", $(this).find('option:selected').attr('data-egitimyiliid'));
                 localStorage.setItem("brans", $(this).find('option:selected').attr('data-brans'));
+                localStorage.setItem("okuladikisa", $(this).find('option:selected').attr('data-okuladikisa'));
                
                window.location.href = "pages/main.html";
             });
@@ -100,6 +108,8 @@
                 localStorage.setItem("kisiid", kisiid);
                 localStorage.setItem("okulid", okulid);
                 localStorage.setItem("egitimyiliid", egitimyiliid);
+                localStorage.setItem("brans", brans);
+                localStorage.setItem("okuladikisa", okuladikisa);
                 var kurumid = localStorage.getItem("kurumid");
                 
                 window.location.href = "pages/main.html";

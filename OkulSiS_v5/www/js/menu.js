@@ -12,22 +12,27 @@ function load() {
             $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
         }
     });
-    var okuladi = localStorage.getItem("okuladi") + "</br>";
+    var okuladikisa = "<span font-size:80%;'>" + localStorage.getItem("okuladikisa") + "&nbsp;&nbsp; </span></br></br></br>" ;
     var okullogo = localStorage.getItem("okullogo");
-  
+    var kisilogo = "http://mobile.okulsis.net:8280/" + localStorage.getItem("kisilogo");
+    //alert(kisilogo);
+    document.getElementById("x").src = kisilogo;
+    document.getElementById("y").src = "../images/yyyy.png";
  
     var okulid = localStorage.getItem("okulid");
-    var kisiid = localStorage.getItem("kisiid");
+    var okuladikisa = localStorage.getItem("okuladikisa");
+    var kisiid = localStorage.getItem("kisiid"  );
     var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
-    var kisiadi = localStorage.getItem("KullaniciAdi");
+    var kisiadi = "<span style=' border-style:solid;  border-width: 1px;font-size: 110%;'>&nbsp;&nbsp;&nbsp;&nbsp;" + localStorage.getItem("KullaniciAdi") + "&nbsp;&nbsp; </span></br>";
     var lid = localStorage.getItem("lid");
-    var brans = localStorage.getItem("brans");
-    alert(brans);
+    var brans = "</br></br></br><span style='border-style:solid;  border-width: 1px; font-size: 110%; margin-left:25%; '>&nbsp;&nbsp;" + localStorage.getItem("brans") +"&nbsp;&nbsp; </span></br>";
+   // alert(brans);
     var cid = localStorage.getItem("cid");
-    document.getElementsByTagName("P")[0].innerHTML = okuladi  + kisiadi;
+    document.getElementsByTagName("P")[0].innerHTML = brans + kisiadi;
+    $('#okuladiamk').append('' + okuladikisa + '');
   //  alert(ip);
     //menu başlangıç
     try {
@@ -83,11 +88,13 @@ function load() {
             for (var j = 0; j < data.length; j++) {
                 text = data[j].MenuAdi;            
                 url = data[j].URL;
+               
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
 
+             
+                    $('.row').append('<a href=' + url + '><ul id="dashboardnew" >' + text + '<p>' + value + '</p></ul></a>');
                 
-                $('.row').append('<div class="small-box"><div class="inner"><h3>'+value+'</h3><p>'+text+'</p></div><div class="icon"><i class="ion ion-bag"></i></div> <a href="'+url+'" class="small-box-footer">Detaylar <i class="fa fa-arrow-circle-right"></i></a></div>');
             }
         }
     });
