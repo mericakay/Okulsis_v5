@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="scripts/jquery.min.js"></script>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+    <script type="text/javascript" src="js/login.js"></script>
+    <script>
+        function calc() {
+            var tchatirla = "";
+            if (document.getElementById('xxx').checked) {
+                tchatirla = $("#name").val();
+                localStorage.setItem("tchatirla", tchatirla);
+               
+                localStorage.removeItem("KullaniciAdi");
+                localStorage.removeItem("gelenid");
+                localStorage.removeItem("okulid");
+            } else {
+                localStorage.clear();
+                localStorage.removeItem("tc");
+                localStorage.removeItem("KullaniciAdi");
+                localStorage.removeItem("gelenid");
+                localStorage.removeItem("okulid");
+                localStorage.removeItem("tchatirla");
+                
+            }
+        }
+    </script>
+
+</head>
+<body onload="load()">
+    <select id="selectLanguage"> </select>
+    <div class="app">
+
+        <form action="./" method="post">
+
+            <input class="formcontrol" id="name" name="name" type="number" min="0" max="11" onKeyPress="if(this.value.length==11) return false;" placeholder="TC Kimlik No">
+            <input class="formcontrol" id="password" name="password" type="password" placeholder="Şifre">
+            <input class="testbutton" type="button" id="button1" value="GİRİŞ" />
+            <input type="checkbox" id="xxx" name="xxx" onclick="calc();" /><label>Beni Hatırla..</label>
+            <p>.</p>
+        </form>
+    </div>
+    <div class="bilsalogo"><img src="http://mobile.okulsis.net:8280/okulsis/image/okulsis/logo.png" /></div>
+</body>
+</html>
