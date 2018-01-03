@@ -12,7 +12,7 @@ function load() {
             $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
         }
     });
-    var okuladikisa = "<span font-size:80%;'>" + localStorage.getItem("okuladikisa") + "&nbsp;&nbsp; </span></br></br></br>" ;
+  
     var okullogo = localStorage.getItem("okullogo");
     var kisilogo = "http://mobile.okulsis.net:8280/" + localStorage.getItem("kisilogo");
     //alert(kisilogo);
@@ -20,19 +20,19 @@ function load() {
     document.getElementById("y").src = "../images/yyyy.png";
  
     var okulid = localStorage.getItem("okulid");
-    var okuladikisa = localStorage.getItem("okuladikisa");
+    var okuladikisa = "</br>&nbsp;&nbsp;&nbsp;<span style='padding-top:10px;'>&nbsp;" + localStorage.getItem("okuladikisa") + " </span>";
     var kisiid = localStorage.getItem("kisiid"  );
     var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
-    var kisiadi = "<span style=' border-style:solid;  border-width: 1px;font-size: 110%;'>&nbsp;&nbsp;&nbsp;&nbsp;" + localStorage.getItem("KullaniciAdi") + "&nbsp;&nbsp; </span></br>";
+    var kisiadi = "<span>" + localStorage.getItem("KullaniciAdi") + "&nbsp; </span>";
     var lid = localStorage.getItem("lid");
-    var brans = "</br></br></br><span style='border-style:solid;  border-width: 1px; font-size: 110%; margin-left:25%; '>&nbsp;&nbsp;" + localStorage.getItem("brans") +"&nbsp;&nbsp; </span></br>";
+    var brans = "</br></br></br><span  '>&nbsp;&nbsp;" + localStorage.getItem("brans") +"&nbsp;</span>";
    // alert(brans);
     var cid = localStorage.getItem("cid");
-    document.getElementsByTagName("P")[0].innerHTML = brans + kisiadi;
-    $('#okuladiamk').append('' + okuladikisa + '');
+    document.getElementsByTagName("P")[0].innerHTML = okuladikisa + brans + kisiadi  ;
+   
   //  alert(ip);
     //menu başlangıç
     try {
@@ -60,7 +60,7 @@ function load() {
                     if (collapse == 1) {
                         $('#menu ul').append('<span class="opener" onclick="myFunction()" >' + text + '</span>');
                     } else {
-                        $('#menu ul').append('<li><a href="' + url + ' ">' + text + '</a></li>');
+                        $('#menu ul').append('<li><a href="' + url + '  ">' + text + '</a></li>');
                     }
                   
 
@@ -75,7 +75,7 @@ function load() {
 
     //dashboard başlangıç
    $.ajax({
-       url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&languageID=' + lid + '&cid=' + cid +'',
+       url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -91,9 +91,10 @@ function load() {
                
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
+                ImageURL = data[j].ImageURL;
 
-             
-                    $('.row').append('<a href=' + url + '><ul id="dashboardnew" >' + text + '<p>' + value + '</p></ul></a>');
+
+                $('.row').append('<a href=' + url + ' id="dashboardiconnew"><img src="' + ImageURL + '"></a>');
                 
             }
         }

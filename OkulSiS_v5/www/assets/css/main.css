@@ -2281,8 +2281,8 @@ header p {
 header.major > :last-child {
     border-bottom: solid 3px #f56a6a;
     display: inline-block;
-    margin: 0 0 2em 0;
-    padding: 0 0.75em 0.5em 0;
+    margin: 0 0 1em 0;
+    padding: 0 0.50em 0.5em 0;
 }
 
 header.main > :last-child {
@@ -3751,6 +3751,7 @@ button,
 @media screen and (max-width: 736px) {
 
     #sidebar .toggle {
+        margin-top:30%;
         text-indent: 7.25em;
         width: 7.25em;
     }
@@ -3785,6 +3786,7 @@ button,
     border-bottom: solid 5px #f56a6a;
     padding: 0em 0 1em 0;
     position: relative;
+    top:0;
 }
 
     #header > * {
@@ -3816,7 +3818,8 @@ button,
 @media screen and (max-width: 736px) {
 
     #header {
-        padding-top: 5em;
+        padding-top: 0em;
+        padding-bottom:5em;
     }
 
         #header .logo {
@@ -3826,10 +3829,11 @@ button,
 
         #header .icons {
             height: 8em;
-            line-height: 5em;
+            line-height: 7em;
             position: absolute;
-            right: -0.2em;
-            top: 0;
+            right: -0.1em;
+            top: 55%;
+
         }
 }
 
@@ -4049,22 +4053,13 @@ button,
         padding-top: 0;
     }
 
-#dashboardnew {
-    margin-left: 15px;
-    min-width: 120px;
-    max-width: 120px;
-    max-height: 100px;
-    min-height: 100px;
-    padding-top: 30px;
-    text-align: center;
-    background-color: #F0F0F0;
-    color: black;
-    border-bottom-color: #aaa;
-    border-right-color: #aaa;
-    border-top-color: #ddd;
-    border-left-color: #ddd;
-    border-radius: 3px;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    box-shadow: 5px 5px grey;
+#okuladi {
+    font-size: 50%;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#dashboardiconnew {
+    margin-left:5%;
+    margin-bottom:3%;
+    margin-top:0px;
 }
