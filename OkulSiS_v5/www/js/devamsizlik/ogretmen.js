@@ -34,7 +34,7 @@ function load() {
     var saniye = tarih.getSeconds();
     var date = new Date(Date.UTC(yil, ay, gun, saat, dakika, saniye));
     date = date.toLocaleDateString();
-    // alert(date);
+    //alert(date);
     var dakka = tarih.toLocaleTimeString();
     var gelentarih = date + " " + dakka;
     var dvmGec = 0;
@@ -99,45 +99,68 @@ function load() {
 
 
                     sinifid = this.value;
+                    try {
 
+                    } catch (e) {
+
+                    }
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgramiDersSaatleri_mbllogin&kisiId=' + kisiid + '&sinifID=' + this.value + '&tarih=' + gelentarih + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersProgramiDersSaatleri_mbllogin&kisiId=' + kisiid + '&sinifID=' + this.value + '&tarih=' + date + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
+
                         success: function (data) {
                             var j = 0;
                             var dataSet = [];
                             var properties = [];
-                            $('#sube').empty();
+                            
                             for (var j = 0; j < data.length; j++) {
                                 //ogretmenDersProgramiDersSaatleri
                                 var text = data[j].Aciklama;
                                 var derssirasi = data[j].DersSirasi;
                                 var dersid = data[j].DersID;
-
-
+                           
                             }
-                            if (date.length == 2) {
-                                $("#example td").remove();;
+                            if (date.length == 1) {
+                                alert("Aktif Ders Saati içerisinde değilsiniz ")
+                            }
+                                $("#example td").remove();
                                 $.ajax({
 
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + sinifid + '&tarih=' + x + '&dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + sinifid + '&tarih=' + date + '&dersSirasi=' + derssirasi + '&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
-                                        var j = 0;
+                                       
+                                        var i = 0;
+                                      
                                         var dataSet = [];
+                                        
                                         var properties = [];
+                                       
                                         //$('#location').empty();
-                                        for (var j = 0; j < data.length; j++) {
-                                            var Numarasi = data[j].Numarasi;
-                                            var Adi = data[j].Adsoyad;
-                                            var SoyAdi = data[j].Soyadi;
-                                            var Tc = data[j].TCKimlikNo;
-                                            var selected = data[j].selected;
-                                            var oid = data[j].OgrenciID;
-                                            $('#example').append('<tr><td multiple="multiple" onclick="myFunction()">' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox" name="gec" value="gec"></td><td><input type="checkbox" name="yok" value="yok">  </td><td style="display:none;">' + oid + '</td></tr>');
+                                        try {
+                                          
+                                         
+                                            for (var i = 0; i < data.length; i++) {
+                                                
+                                                var Numarasi = data[i].Numarasi;
+                                            
+                                                var Adi = data[i].Adsoyad;
+                                               
+                                             
+                                              
+                                                var Tc = data[i].TCKimlikNo;
+                                             
+                                                
+                                                var oid = data[i].OgrenciID;
+                                                
+                                                $('#example').append('<tr><td>' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox" name="gec" value="gec"></input></td><td><input type="checkbox" name="yok" value="yok"> </input> </td><td style="display:none;">' + oid + '</td></tr>');
+                                            }
+                                        } catch (e) {
+                                            alert(e);
                                         }
+                                        
                                         $("#example").on('click', 'td', function () {
 
                                             var getJsonFromTable = function () {
@@ -157,6 +180,7 @@ function load() {
                                             };
                                             $(function () {
                                                 console.log(getJsonFromTable());
+                                                alert(getJsonFromTable());
                                             });;
 
                                         });
@@ -164,7 +188,7 @@ function load() {
 
                                     }
                                 });
-                            }
+                          
 
 
                         }
