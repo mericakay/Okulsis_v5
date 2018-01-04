@@ -86,7 +86,7 @@ function load() {
             var dataSet = [];
             var properties = [];
             $('#sinavsec').empty();
-            $('#cevaplar').empty();
+            $("#cevaplar td").remove();
             for (var j = 0; j < data.length; j++) {
                 var text = data[j].SinavAciklamasi;
                 var sinavid = data[j].SinavID;
@@ -103,7 +103,7 @@ function load() {
                 $('#subesec').empty();
                 $('#ogrencisec').empty();
                 $('#kitapciksec').empty();
-                $('#cevaplar').empty();
+                $("#cevaplar td").remove();
                 $.ajax({
                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=' + sinavidlist + '&okulID=' + okulid + '&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                     type: 'GET',
@@ -132,7 +132,7 @@ function load() {
                             sinavokulidgelen = $(this).find('option:selected').attr('data-sinavokulid');
                             localStorage.setItem("girensubler", girensubler);
                             localStorage.setItem("sinavokulidgelen", sinavokulidgelen);
-                            $('#cevaplar').empty();
+                            $("#cevaplar td").remove();
                             $.ajax({
                                 url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=' + this.value + '&sinifKodu=' + girensubler + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                 type: 'GET',
@@ -147,17 +147,20 @@ function load() {
                                         var text = data[j].AdiSoyadi;
                                         var SinifKodu = data[j].SinifKodu;
                                         var sinavogrenciid = data[j].SinavOgrenciID;
+                                      
 
                                         // alert(sinifid);
                                         $('#ogrencisec').append("<option value=" + SinifKodu + " data-user=" + sinavogrenciid + " id=" + msglist + ">" + text + "</option>");
                                     }
                                     $("#ogrencisec").on('change', function () {
-                                        $('#cevaplar').empty();
+                                        $("#cevaplar td").remove();
                                         document.getElementById("kitapciksec").style.visibility = "visible";
                                         var girensublerr = localStorage.getItem("girensubler");
                                         var sinavokulidgelenler = localStorage.getItem("sinavokulidgelen");
                                         var msglist = document.getElementById("msglist");
-                                        sinavogrenciid = msglist.getAttribute("data-user");
+                                        localStorage.setItem("sinavogrenciid", $(this).find('option:selected').attr('data-user'));
+                                        sinavogrenciid=  localStorage.getItem("sinavogrenciid");
+                                        
                                         $.ajax({
                                             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SinavdaKullanilanKitaplar_mbllogin&sinavOkulID=' + sinavokulidgelenler + '&sinifKodu=' + SinifKodu + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                             type: 'GET',
@@ -175,7 +178,8 @@ function load() {
                                                     $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
                                                 }
                                                 $("#kitapciksec").on('change', function () {
-                                                    $('#cevaplar').empty();
+                                                    
+                                                   
                                                     var sinavidlist = localStorage.getItem("sinavidlist");
                                                     var sinavdersidlist = localStorage.getItem("sinavdersidlist");
                                                     $.ajax({

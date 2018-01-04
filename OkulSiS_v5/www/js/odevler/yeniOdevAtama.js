@@ -23,6 +23,10 @@ function load() {
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
+    
+    document.getElementById("myDate").valueAsDate = new Date();
+    var x = document.getElementById("myDate").value;
+    
     //menu başlangıç
 
     try {
@@ -85,7 +89,7 @@ function load() {
                     var sinifid = $(this).find('option:selected').attr('value');
                     localStorage.setItem("sinifid", sinifid);
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + this.value + '&tarih=2016-09-19+00%3A00%3A00&dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + this.value + '&tarih='+x+'dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -164,7 +168,7 @@ function load() {
         mesaj = $("#fmesaj").val();
 
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevAtama_mbllogin&sinifDersID=' + sinifid + '&ogretmenID=' + kisiid + '&teslimTarihi=2017-11-18+00:00:00&tanim=' + konu + '&aciklama=' + mesaj + '&odevTipID=' + odevtip + '&notIleDegerlendirilsin=0&donemNotunaEtkiEtsin=0&cid=' + cid + '&XmlData=' + myJSON + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevAtama_mbllogin&sinifDersID=' + sinifid + '&ogretmenID=' + kisiid + '&teslimTarihi='+x+'&tanim=' + konu + '&aciklama=' + mesaj + '&odevTipID=' + odevtip + '&notIleDegerlendirilsin=0&donemNotunaEtkiEtsin=0&cid=' + cid + '&XmlData=' + myJSON + '&languageID=' + lid + '&did=' + did + '',
             data: {
 
                 konu: $("#ltanim").val(),
