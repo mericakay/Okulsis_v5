@@ -67,7 +67,7 @@ function load() {
 
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensubelistesi_mbllogin&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensubelistesi_mbllogin&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&dersYiliID=' + dersyiliid + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -100,7 +100,7 @@ function load() {
                                 $('#sube').append("<option value=" + ogrenciID + " >" + text + "</option>");
                             }
                             $("#sube").on('change', function () {
-                                $("#example td").remove();;
+                                $("#example td").remove();
                                 $.ajax({
                                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                     type: 'GET',

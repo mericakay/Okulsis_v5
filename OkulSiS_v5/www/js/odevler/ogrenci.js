@@ -67,7 +67,7 @@ function load() {
 
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&egitimYilID=' + egitimyiliid + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

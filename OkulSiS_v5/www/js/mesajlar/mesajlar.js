@@ -85,6 +85,7 @@ function load() {
                     $('#cmb1').append("<option value=" + cmbid + ">" + text + "</option>");
                 }
                 $("#cmb1").on('change', function () {
+                    $("#cmb3").empty();
                     document.getElementById("cmb2").style.visibility = "visible";
                     gelensendrolid = this.value;
                     $.ajax({
@@ -106,6 +107,7 @@ function load() {
                                 $('#cmb2').append("<option  value=" + kontrol + "  >" + aciklama + "</option>");
                             }
                             $("#cmb2").on('change', function () {
+                                $("#cmb3").empty();
                                 document.getElementById("cmb3").style.visibility = "visible";
                                 if (this.value == 1) {
                                 $.ajax({

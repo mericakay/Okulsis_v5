@@ -49,10 +49,11 @@
                  brans = data[j].brans;
                  kisilogo = data[j].defaultFotoURL;
                  localStorage.setItem("kisilogo", kisilogo);
-               //  alert(brans);
+
+               alert(brans);
                
 
-                 $('#selectSchool').append("<option  data-okuladikis=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
+                 $('#selectSchool').append("<option  data-okuladikisa=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
           
             }
             $("#selectSchool").on('change', function () {
@@ -78,6 +79,7 @@
                 egitimyiliid = egitimyiliidlist.getAttribute("data-egitimyiliid");
                 brans = branslist.getAttribute("data-brans");
                 okuladikisa = okuladikisalist.getAttribute("data-okuladikisa");
+                
               
             
                // alert(okulid);

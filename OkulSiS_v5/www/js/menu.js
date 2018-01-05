@@ -20,7 +20,7 @@ function load() {
     document.getElementById("y").src = "../images/yyyy.png";
  
     var okulid = localStorage.getItem("okulid");
-    var okuladikisa = "</br>&nbsp;&nbsp;&nbsp;<span style='padding-top:10px;'>&nbsp;" + localStorage.getItem("okuladikisa") + " </span>";
+    var okuladikisa = "</br>&nbsp;&nbsp;&nbsp;<span style='padding-top:10px; position:fixed;'>&nbsp;" + localStorage.getItem("okuladikisa") + " </span>";
     var kisiid = localStorage.getItem("kisiid"  );
     var dersyiliid = localStorage.getItem("dersyiliid");
     var did = localStorage.getItem("did");
@@ -28,8 +28,8 @@ function load() {
     var ip = localStorage.getItem("ip");
     var kisiadi = "<span>" + localStorage.getItem("KullaniciAdi") + "&nbsp; </span>";
     var lid = localStorage.getItem("lid");
-    var brans = "</br></br></br><span  '>&nbsp;&nbsp;" + localStorage.getItem("brans") +"&nbsp;</span>";
-   // alert(brans);
+    var brans = "</br></br></br><span style='padding-top:10px; '>&nbsp;&nbsp;" + localStorage.getItem("brans") +"&nbsp;</span>";
+ 
     var cid = localStorage.getItem("cid");
     document.getElementsByTagName("P")[0].innerHTML = okuladikisa + brans + kisiadi  ;
    
@@ -94,7 +94,7 @@ function load() {
                 ImageURL = data[j].ImageURL;
 
 
-                $('.row').append('<a href=' + url + ' id="dashboardiconnew"><img src="' + ImageURL + '"></a>');
+                $('.row').append('<a href=' + url + ' style="position:static;" id="dashboardiconnew"><img src="' + ImageURL + '"></a>');
                 
             }
         }

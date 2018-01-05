@@ -84,7 +84,7 @@ function load() {
                     $('#selectNumber').append("<option value=" + sinavid + ">" + text + "</option>");
                 }
                 $("#selectNumber").on('change', function () {
-
+                    $("#giden td").remove();
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=' + this.value + '&donemID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&grid=1',
                         type: 'GET',

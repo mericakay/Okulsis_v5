@@ -71,7 +71,7 @@ function load() {
 
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensubelistesi_mbllogin&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenProgramindakiDersler_mbllogin&kisiId=' + kisiid + '&okulID=' + okulid + '&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -82,12 +82,16 @@ function load() {
                 for (var j = 0; j < data.length; j++) {
                     var text = data[j].Aciklama;
                     var sinifid = data[j].SinifID;
+                    var sinifdersid = data[j].SinifDersID;
                     // alert(sinifid);
-                    $('#sinifsec').append("<option value=" + sinifid + ">" + text + "</option>");
+                    $('#sinifsec').append("<option value=" + sinifid + " classs=" + sinifdersid + ">" + text + "</option>");
                 }
                 $("#sinifsec").on('change', function () {
                     var sinifid = $(this).find('option:selected').attr('value');
+                    var sinifdersid = $(this).find('option:selected').attr('classs');
+                    //alert(sinifdersid);
                     localStorage.setItem("sinifid", sinifid);
+                    localStorage.setItem("sinifdersid", sinifdersid);
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=ogretmenDersPrgDersSaatleriOgrencileri_mbllogin&sinifID=' + this.value + '&tarih='+x+'dersSirasi=1&dersYiliID=' + dersyiliid + '&kisiId=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
@@ -160,15 +164,14 @@ function load() {
         alert("gg");
         var odevtip = localStorage.getItem("odevtip");
         var sinifid = localStorage.getItem("sinifid");
+        var sinifdersid = localStorage.getItem("sinifdersid");
         var myJSON = localStorage.getItem("myJSON");
-        alert(odevtip);
-        alert(sinifid);
-        alert(myJSON);
+       
         konu = $("#ltanim").val();
         mesaj = $("#fmesaj").val();
 
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevAtama_mbllogin&sinifDersID=' + sinifid + '&ogretmenID=' + kisiid + '&teslimTarihi='+x+'&tanim=' + konu + '&aciklama=' + mesaj + '&odevTipID=' + odevtip + '&notIleDegerlendirilsin=0&donemNotunaEtkiEtsin=0&cid=' + cid + '&XmlData=' + myJSON + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevAtama_mbllogin&sinifDersID=' + sinifdersid + '&ogretmenID=' + kisiid + '&teslimTarihi='+x+'&tanim=' + konu + '&aciklama=' + mesaj + '&odevTipID=' + odevtip + '&notIleDegerlendirilsin=0&donemNotunaEtkiEtsin=0&cid=' + cid + '&XmlData=' + myJSON + '&languageID=' + lid + '&did=' + did + '',
             data: {
 
                 konu: $("#ltanim").val(),
