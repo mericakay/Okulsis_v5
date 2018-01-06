@@ -81,55 +81,114 @@ function load() {
                 if (data.length == 2) {
                     document.getElementById("sube").style.visibility = "hidden";
                     document.getElementsByTagName("P")[0].innerHTML = text;
-                    $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + ogrenciid + '&cid=' + cid + '&did=' + did + '',
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            var j;
-                            var dataSet = [];
-                            var properties = [];
-                            //$('#location').empty();
-                            for (var j = 0; j < data.length; j++) {
-                                var dersadi = data[j].DersAdi;
-                                var hs = data[j].HaftalikDersSaati;
-                                var ysp = data[j].YilSonuPuani;
-                                var y1 = data[j].Yazili1;
-                                var y2 = data[j].Yazili2;
-                                var y3 = data[j].Yazili3;
-                                var y4 = data[j].Yazili4;
-                                var y5 = data[j].Yazili5;
+                    $("#donem").on('change', function () {
+                        $("#example td").remove();
+                        var secilendonem = document.getElementById("donem").value;
+                        // alert(secilendonem);
 
-                                $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
-                            }
+                        if (secilendonem === "1.donem") {
+
+                            gelendonem = 1;
+
+
 
                         }
+                        else {
+                            gelendonem = 2;
+
+
+                        }
+                        try {
+                            // alert(ip);
+                            $.ajax({
+                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + ogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    //$('#location').empty();
+                                    for (var j = 0; j < data.length; j++) {
+                                        var dersadi = data[j].DersAdi;
+                                        var hs = data[j].HaftalikDersSaati;
+                                        var ysp = data[j].YilSonuPuani;
+                                        var y1 = data[j].Yazili1;
+                                        var y2 = data[j].Yazili2;
+                                        var y3 = data[j].Yazili3;
+                                        var y4 = data[j].Yazili4;
+                                        var y5 = data[j].Yazili5;
+                                        var s1 = data[j].Sozlu1;
+                                        var s2 = data[j].Sozlu2;
+                                        var s3 = data[j].Sozlu3;
+                                        var o1 = data[j].Odev1;
+                                        var o2 = data[j].Odev2;
+
+                                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + s1 + '</td><td>' + s2 + '</td><td>' + s3 + '</td><td>' + o1 + '</td><td>' + o2 + '</td><td>' + ysp + '</td></tr>');
+                                    }
+
+                                }
+                            });
+                        } catch (e) {
+                            alert(e);
+                        }
+
                     });
+
                 }
                 $("#sube").on('change', function () {
-                    $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + this.value + '&cid=' + cid + '&did=' + did + '',
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            var j;
-                            var dataSet = [];
-                            var properties = [];
-                            //$('#location').empty();
-                            for (var j = 0; j < data.length; j++) {
-                                var dersadi = data[j].DersAdi;
-                                var hs = data[j].HaftalikDersSaati;
-                                var ysp = data[j].YilSonuPuani;
-                                var y1 = data[j].Yazili1;
-                                var y2 = data[j].Yazili2;
-                                var y3 = data[j].Yazili3;
-                                var y4 = data[j].Yazili4;
-                                var y5 = data[j].Yazili5;
+                    $("#donem").on('change', function () {
+                        $("#example td").remove();
+                        var secilendonem = document.getElementById("donem").value;
+                        // alert(secilendonem);
 
-                                $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + ysp + '</td></tr>');
-                            }
+                        if (secilendonem === "1.donem") {
+
+                            gelendonem = 1;
+
+
 
                         }
+                        else {
+                            gelendonem = 2;
+
+
+                        }
+                        try {
+                            // alert(ip);
+                            $.ajax({
+                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    //$('#location').empty();
+                                    for (var j = 0; j < data.length; j++) {
+                                        var dersadi = data[j].DersAdi;
+                                        var hs = data[j].HaftalikDersSaati;
+                                        var ysp = data[j].YilSonuPuani;
+                                        var y1 = data[j].Yazili1;
+                                        var y2 = data[j].Yazili2;
+                                        var y3 = data[j].Yazili3;
+                                        var y4 = data[j].Yazili4;
+                                        var y5 = data[j].Yazili5;
+                                        var s1 = data[j].Sozlu1;
+                                        var s2 = data[j].Sozlu2;
+                                        var s3 = data[j].Sozlu3;
+                                        var o1 = data[j].Odev1;
+                                        var o2 = data[j].Odev2;
+
+                                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + s1 + '</td><td>' + s2 + '</td><td>' + s3 + '</td><td>' + o1 + '</td><td>' + o2 + '</td><td>' + ysp + '</td></tr>');
+                                    }
+
+                                }
+                            });
+                        } catch (e) {
+                            alert(e);
+                        }
+
                     });
 
                 });
@@ -142,15 +201,4 @@ function load() {
 
 
     //Contenier Son
-};
-
-function secilenDonem() {
-
-    if (secilendonem === "1.donem") {
-
-        gelendonem = 1;
-    }
-    else {
-        gelendonem = 2;
-    }
 };

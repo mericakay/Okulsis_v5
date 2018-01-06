@@ -90,35 +90,63 @@ function load() {
                     document.getElementsByTagName("P")[0].innerHTML = text;
                     var ogrenciidselected = this.value;
 
-                    $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=' + sinifid + '&ogrenciID=' + ogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
-                        type: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            var j;
-                            var dataSet = [];
-                            var properties = [];
-                            for (var j = 0; j < data.length; j++) {
-                                var derssaati = data[j].DersSaati;
-                                var gun1 = data[j].Gun1_ders;
-                                var gun2 = data[j].Gun2_ders;
-                                var gun3 = data[j].Gun3_ders;
-                                var gun4 = data[j].Gun4_ders;
-                                var gun5 = data[j].Gun5_ders;
+                    $("#donem").on('change', function () {
+                        $("#example td").remove();
+                        var secilendonem = document.getElementById("donem").value;
+                        // alert(secilendonem);
+
+                        if (secilendonem === "1.donem") {
+
+                            gelendonem = 1;
 
 
-                                $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
 
-                            }
+                        }
+                        else {
+                            gelendonem = 2;
+
+
+                        }
+                        try {
+                            // alert(ip);
+                            $.ajax({
+                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&ogrenciID=' + ogrenciid + '&donemID=' + gelendonem + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                type: 'GET',
+                                dataType: 'json',
+                                success: function (data) {
+                                    var j;
+                                    var dataSet = [];
+                                    var properties = [];
+                                    for (var j = 0; j < data.length; j++) {
+                                        var derssaati = data[j].DersSaati;
+
+
+                                        var gun1 = data[j].Gun1_ders;
+                                        var gun2 = data[j].Gun2_ders;
+                                        var gun3 = data[j].Gun3_ders;
+                                        var gun4 = data[j].Gun4_ders;
+                                        var gun5 = data[j].Gun5_ders;
+
+
+                                        $('#example').append('<tr><td>' + derssaati + '</td><td>' + gun1 + '</td><td>' + gun2 + '</td><td>' + gun3 + '</td><td>' + gun4 + '</td><td>' + gun5 + '</td></tr>');
+
+                                    }
+                                }
+
+                            });
+                        } catch (e) {
+                            alert(e);
                         }
 
                     });
+
+                   
                 }
                 $("#selectNumber").on('change', function () {
                     var ogrenciidselected = this.value;
 
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&sinifID=' + sinifid + '&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciVeYakiniDersProgramiListesi_mbllogin&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
