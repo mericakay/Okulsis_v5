@@ -76,7 +76,7 @@ function load() {
                 for (var j = 0; j < data.length; j++) {
                     var sinavtarih = data[j].SinavTarihi;
                     var aciklama = data[j].SinavAciklamasi;
-                    var sinavturadi = data[j].SinavTurAdi;
+                    var sinavturadi = data[j].sinavTurTanim;
 
 
                     $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
@@ -85,26 +85,7 @@ function load() {
             }
         });
 
-        $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencininAldigiNotlar_mbllogin&kisiId=' + kisiid + '&donemID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                var j;
-                var dataSet = [];
-                var properties = [];
-                //$('#location').empty();
-                for (var j = 0; j < data.length; j++) {
-                    var aciklamasi = data[j].Aciklamasi;
-                    var puan = data[j].Puan;
 
-
-
-                    $('#sonuc').append('<tr><td>' + aciklamasi + '</td><td>' + puan + '</td></tr>');
-                }
-
-            }
-        });
 
     } catch (e) {
         alert(e);

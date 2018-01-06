@@ -149,9 +149,9 @@ function load() {
                                 var properties = [];
                                 //$('#location').empty();
                                 for (var j = 0; j < data.length; j++) {
-                                    var lroad = data[j].lroad;
+                                    
                                     var proad = data[j].proad;
-                                    localStorage.setItem("lroad", lroad);
+                                 
                                     localStorage.setItem("proad", proad);
                                     window.location.href = "../rapor.html";
                                 }
