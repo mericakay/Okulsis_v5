@@ -22,7 +22,7 @@ function load() {
     var lid = localStorage.getItem("lid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
     var cid = localStorage.getItem("cid");
-
+    var sinavid = "";
 
 
     //menu başlangıç
@@ -79,11 +79,13 @@ function load() {
                 $('#selectNumber').empty();
                 for (var j = 0; j < data.length; j++) {
                     var text = data[j].SinavAciklamasi;
-                    var sinavid = data[j].SinavID;
+                     sinavid = data[j].SinavID;
                     // alert(sinifid);
                     $('#selectNumber').append("<option value=" + sinavid + ">" + text + "</option>");
                 }
                 $("#selectNumber").on('change', function () {
+                    sinavid = this.value;
+                   // localStorage.setItem("sinavid", sinavid);
                     $("#giden td").remove();
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=' + this.value + '&donemID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&grid=1',
@@ -99,13 +101,68 @@ function load() {
                                 var adsoyad = data[j].adsoyad;
                                 var aciklama = data[j].Aciklamasi;
                                 var puan = data[j].Puan;
+                                var ogrenciid = data[j].OgrenciID
+;
 
 
-                                $('#giden').append('<tr><td>' + numarasi + '</td><td>' + adsoyad + '</td><td>' + aciklama + '</td><td>' + puan + '</td></tr>');
+                                $('#giden').append('<tr ><td>' + numarasi + '</td><td>' + adsoyad + '</td><td>' + aciklama + '</td><td>' + puan + '</td><td style="display:none;" name="oid" >' + ogrenciid + '</td></tr>');
                             }
 
                         }
                     });
+
+                });
+                $("#giden").on('click', 'td', function () {
+                    var table = document.getElementById("giden");
+                    var rows = table.getElementsByTagName("tr");
+                    for (i = 0; i < rows.length; i++) {
+                        var currentRow = table.rows[i];
+                        var createClickHandler =
+                            function (row) {
+                                return function () {
+                                    var rows = $("#location>tr");
+                                    // alert(JSON.stringify(rows, null, 4));
+                                    console.log(JSON.stringify(rows, null, 4));
+                                    var cell = row.getElementsByTagName("td")[4];
+
+                                    var id = cell.innerHTML;
+                                    localStorage.setItem("secilenogrenciid", id);
+                                    
+                                    // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
+                                };
+                            };
+
+                        currentRow.onclick = createClickHandler(currentRow);
+                    }
+                    
+                    
+                    try {
+                        var secilenogrenciid = localStorage.getItem("secilenogrenciid");
+                       // alert(secilenogrenciid);
+                        $.ajax({
+                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + secilenogrenciid + '&sinavID=' + sinavid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+                            type: 'GET',
+                            dataType: 'json',
+                            success: function (data) {
+                                var j;
+                                var dataSet = [];
+                                var properties = [];
+                                //$('#location').empty();
+                                for (var j = 0; j < data.length; j++) {
+                                    var lroad = data[j].lroad;
+                                    var proad = data[j].proad;
+                                    localStorage.setItem("lroad", lroad);
+                                    localStorage.setItem("proad", proad);
+                                    window.location.href = "../rapor.html";
+                                }
+                               
+                              
+                            }
+                        });
+                    } catch (e) {
+                        alert(e);
+                    }
+                   
 
                 });
             }
@@ -120,3 +177,7 @@ function load() {
 
 };
 
+function openReport() {
+
+   
+}

@@ -23,9 +23,11 @@ function load() {
     var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
-    
-    document.getElementById("myDate").valueAsDate = new Date();
-    var x = document.getElementById("myDate").value;
+    var theDate = new Date();
+    var myNewDate = new Date(theDate);
+    myNewDate.setDate(myNewDate.getDate() + 1);
+    document.getElementById("myDate").valueAsDate = myNewDate;
+  
     
     //menu başlangıç
 

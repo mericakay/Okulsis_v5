@@ -180,7 +180,7 @@ function load() {
                                             };
                                             $(function () {
                                                 console.log(getJsonFromTable());
-                                                alert(getJsonFromTable());
+                                                //alert(getJsonFromTable());
                                             });;
 
                                         });

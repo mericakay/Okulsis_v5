@@ -8,7 +8,8 @@
     var ip = "";
     var dersyiliid = "";
     var kisiid = "";
-   // alert(lid);
+
+   
     $.ajax({
         url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin&languageID=' + lid + '',
         type: 'GET',
@@ -45,13 +46,10 @@
                  did = data[j].did;
                  gelenip = data[j].ip;    
                  rolid = data[j].RolID;
-                 okullogo = data[j].OkulLogo;
+                 okullogo = data[j].OkulLogo1;
                  brans = data[j].brans;
                  kisilogo = data[j].defaultFotoURL;
                  localStorage.setItem("kisilogo", kisilogo);
-
-               alert(brans);
-               
 
                  $('#selectSchool').append("<option  data-okuladikisa=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
           
@@ -121,3 +119,4 @@
 
     });
 }
+

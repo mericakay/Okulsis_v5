@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script src="../js/rapor.js"></script>
+    <style>
+        body {
+            background: #3a7999;
+        }
+        .x {
+            display: block;
+            position: fixed;
+            right: 0;
+            top: 0;
+            width: 32px;
+            height: 32px;
+            transition: transform .25s ease-in-out;
+        }
+
+            .x:hover {
+                transform: rotate(180deg);
+            }
+
+            .x:before {
+                content: "";
+                position: absolute;
+                display: block;
+                margin: auto;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 32px;
+                height: 0;
+                border-top: 1px solid rgba(0,0,0,0.5);
+                transform: rotate(45deg);
+                transform-origin: center;
+            }
+
+            .x:after {
+                content: "";
+                position: absolute;
+                display: block;
+                margin: auto;
+                left: 0;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                width: 32px;
+                height: 0;
+                border-top: 1px solid rgba(0,0,0,0.5);
+                transform: rotate(-45deg);
+                transform-origin: center;
+            }
+            #rapor{
+                padding-top:5%;
+                padding-left:15%;
+            }
+            h3{
+                color:aliceblue;
+            }
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-radius: 50%;
+            border-top: 16px solid #3498db;
+            width: 20px;
+            height: 20px;
+            -webkit-animation: spin 2s linear infinite; /* Safari */
+            animation: spin 2s linear infinite;
+        }
+
+        /* Safari */
+        @-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+            }
+
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body onload="load()">
+
+    <button onclick="close_window()" class="x"> </button>
+    <div class="loader" id="loader"></div>
+    <h3>OkulSis Rapor Ekranı</h3>
+    <div id="rapor"></div>
+
+</body>
+</html>
