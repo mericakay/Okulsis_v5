@@ -21,6 +21,10 @@ function load() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
+    var theDate = new Date();
+    var myNewDate = new Date(theDate);
+    myNewDate.setDate(myNewDate.getDate() + 1);
+    document.getElementById("myDate").valueAsDate = myNewDate;
  try {
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',

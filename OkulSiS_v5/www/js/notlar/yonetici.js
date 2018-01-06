@@ -65,7 +65,7 @@ function load() {
 
 
     //contenier başlangıç
-    var x = document.getElementById("myDate").value;
+  //  var x = document.getElementById("myDate").value;
     try {
         $.ajax({
 
@@ -101,6 +101,7 @@ function load() {
                                 $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");
                             }
                             $("#sube").on('change', function () {
+                                $("#example td").remove();
                                 $.ajax({
 
                                     url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KySubeOgrenciDersListesi_mbllogin&ogrenciSeviyeID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
