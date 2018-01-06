@@ -24,10 +24,12 @@ function load() {
     var did = localStorage.getItem("did");
    // alert(okulid);
     //menu başlangıç
+    
     document.getElementById("cmb3").style.visibility = "hidden";
     document.getElementById("cmb2").style.visibility = "hidden";
     document.getElementById("cmb4").style.visibility = "hidden";
-
+   
+  
     try {
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
@@ -85,9 +87,15 @@ function load() {
                     $('#cmb1').append("<option value=" + cmbid + ">" + text + "</option>");
                 }
                 $("#cmb1").on('change', function () {
+                    
                     $("#cmb3").empty();
                     document.getElementById("cmb2").style.visibility = "visible";
                     gelensendrolid = this.value;
+                   // alert(gelensendrolid);
+                    if (gelensendrolid == 8 || gelensendrolid == 9) {
+                        var x = document.getElementById("cmb3")
+                        x.multiple = false
+                    }
                     $.ajax({
                         url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
                         type: 'GET',

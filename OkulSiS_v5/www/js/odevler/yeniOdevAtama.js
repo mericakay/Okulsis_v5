@@ -27,7 +27,7 @@ function load() {
     var myNewDate = new Date(theDate);
     myNewDate.setDate(myNewDate.getDate() + 1);
     document.getElementById("myDate").valueAsDate = myNewDate;
-  
+    var x = document.getElementById("myDate").value;
     
     //menu başlangıç
 

@@ -105,7 +105,7 @@ function load() {
 ;
 
 
-                                $('#giden').append('<tr ><td>' + numarasi + '</td><td>' + adsoyad + '</td><td>' + aciklama + '</td><td>' + puan + '</td><td style="display:none;" name="oid" >' + ogrenciid + '</td></tr>');
+                                $('#giden').append('<tr ><td>' + numarasi + '</td><td>' + adsoyad + '</td><td>' + puan + '</td><td style="display:none;" name="oid" >' + ogrenciid + '</td></tr>');
                             }
 
                         }
@@ -123,7 +123,7 @@ function load() {
                                     var rows = $("#location>tr");
                                     // alert(JSON.stringify(rows, null, 4));
                                     console.log(JSON.stringify(rows, null, 4));
-                                    var cell = row.getElementsByTagName("td")[4];
+                                    var cell = row.getElementsByTagName("td")[3];
 
                                     var id = cell.innerHTML;
                                     localStorage.setItem("secilenogrenciid", id);
