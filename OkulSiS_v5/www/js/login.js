@@ -14,7 +14,7 @@
             dataType: 'json',
             crossDomain: true,
             success: function (data) {
-                document.getElementById("name").value = tchatirla;
+                document.getElementById("password").value = tchatirla;
                 var j;
                 var dataSet = [];
                 var properties = [];
@@ -83,7 +83,7 @@ $(document).ready(function () {
             },
             error: function (textStatus, errorThrown) {
                 Success = false;//doesnt goes here
-                alert("Beklenmedik bir hata oluştu lütfen daha sonra deneyiniz")
+                alert("Lütfen İnternet Ayarlarınızı Kontrol Ediniz")
             }
         });
 

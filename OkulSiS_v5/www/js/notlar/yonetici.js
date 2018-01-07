@@ -120,7 +120,7 @@ function load() {
                                             var donemikinotu = data[j].Donem2_DonemNotu;
                                             var yilsonupuani = data[j].YilSonuPuani;
                                             var selected = data[j].selected;
-                                            $('#example').append('<tr><td>' + dersadi + '</td><td>' + haftalikderssaati + '</td><td>' + donembirnotu + '</td><td>' + donemikinotu + '</td><td>' + donemikinotu + '</td><td>' + yilsonupuani + '</td></tr>');
+                                            $('#example').append('<tr><td>' + dersadi + '</td><td>' + haftalikderssaati + '</td><td>' + donembirnotu + '</td><td>' + donemikinotu + '</td><td>' + yilsonupuani + '</td></tr>');
                                         }
 
                                     }

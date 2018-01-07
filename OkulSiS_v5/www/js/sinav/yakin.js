@@ -106,6 +106,7 @@ function load() {
                         }
                     });
                 }
+
                 $("#selectNumber").on('change', function () {
                     var ogrenciidselected = this.value;
                     // alert(ogrenciidselected);

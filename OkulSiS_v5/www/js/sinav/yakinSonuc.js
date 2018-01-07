@@ -147,6 +147,31 @@ function load() {
                        var value = data[j].OgrenciID;
                        $('#snc').append("<option value=" + value + ">" + text + "</option>");
                    }
+                   if (data.length == 2) {
+                       document.getElementById("snc").style.visibility = "hidden";
+                      // var ogrenciidselected = this.value;
+                       // alert(ogrenciidselected);
+                       $.ajax({
+                           url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencininAldigiNotlar_mbllogin&kisiId=' + value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                           type: 'GET',
+                           dataType: 'json',
+                           success: function (data) {
+                               var j;
+                               var dataSet = [];
+                               var properties = [];
+                               //$('#location').empty();
+                               for (var j = 0; j < data.length; j++) {
+                                   var aciklamasi = data[j].Aciklamasi;
+                                   var puan = data[j].Puan;
+
+
+
+                                   $('#sonuc').append('<tr><td>' + aciklamasi + '</td><td>' + puan + '</td></tr>');
+                               }
+
+                           }
+                       });
+                   }
                    $("#snc").on('change', function () {
                        var ogrenciidselected = this.value;
                        // alert(ogrenciidselected);

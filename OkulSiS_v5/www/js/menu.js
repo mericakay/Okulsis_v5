@@ -13,11 +13,12 @@ function load() {
         }
     });
   
-    var okullogo = localStorage.getItem("okullogo");
+    var okullogo = "http://mobile.okulsis.net:8280/" + localStorage.getItem("okullogo");
+   // alert(okullogo);
     var kisilogo = "http://mobile.okulsis.net:8280/" + localStorage.getItem("kisilogo");
     //alert(kisilogo);
     document.getElementById("x").src = kisilogo;
-    document.getElementById("y").src = "../images/yyyy.png";
+    document.getElementById("y").src = okullogo;
  
     var okulid = localStorage.getItem("okulid");
     var okuladikisa = "</br>&nbsp;&nbsp;&nbsp;<span style='padding-top:10px; position:fixed;'>&nbsp;" + localStorage.getItem("okuladikisa") + " </span>";
@@ -28,7 +29,8 @@ function load() {
     var ip = localStorage.getItem("ip");
     var kisiadi = "<span>" + localStorage.getItem("KullaniciAdi") + "&nbsp; </span>";
     var lid = localStorage.getItem("lid");
-    var brans = "</br></br></br><span style='padding-top:10px; '>&nbsp;&nbsp;" + localStorage.getItem("brans") +"&nbsp;</span>";
+    var brans = "</br></br></br><span style='padding-top:10px; '>&nbsp;&nbsp;" + localStorage.getItem("brans") + "&nbsp;</span>";
+   // alert(brans);
  
     var cid = localStorage.getItem("cid");
     document.getElementsByTagName("P")[0].innerHTML = okuladikisa + brans + kisiadi  ;
@@ -92,9 +94,16 @@ function load() {
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
                 ImageURL = data[j].ImageURL;
+               // alert(value);
+                if (value == 00 ) {
+                    $('.row').append('<a href=' + url + ' style="position:static; font-size:10px; color:white;" id="dashboardiconnew"><img id="float:left" src="' + ImageURL + '">' + value + '</a>');
+                }
+                else {
+
+                    $('.row').append('<a href=' + url + ' style="position:static; font-size:10px;" id="dashboardiconnew"><img id="float:left" src="' + ImageURL + '">' + value + '</a>');
+                }
 
 
-                $('.row').append('<a href=' + url + ' style="position:static;" id="dashboardiconnew"><img src="' + ImageURL + '"></a>');
                 
             }
         }

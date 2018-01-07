@@ -21,6 +21,7 @@ function load() {
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
+    var gelenodeviddd = "";
 
     //menu başlangıç
 
@@ -82,7 +83,17 @@ function load() {
                     var teslimtarihi = data[j].TeslimTarihi;
                     var aciklama = data[j].Aciklama;
                     var odevid = data[j].OgrenciOdevID;
-                    $('#example').append('<tr><td>' + ogretmenadi + '</td><td>' + dersadi + '</td><td>' + tanim + '</td><td>' + teslimtarihi + '</td><td style="display:none;">' + aciklama + '</td></tr>');
+                    var ogrencigordu = data[j].OgrenciGordu;
+                  //  alert(ogrencigordu);
+                    if (ogrencigordu == 1) {
+                            
+                        $('#example').append('<tr><td class="okundu" >' + ogretmenadi + '</td><td class="okundu">' + dersadi + '</td><td class="okundu">' + tanim + '</td><td class="okundu">' + teslimtarihi + '</td><td class="okundu" style="display:none;">' + aciklama + '</td><td class="okundu"  style="display:none;">' + odevid + '</td></tr>');
+                        
+                    }
+                    else {
+                        $('#example').append('<tr><td class="okunmadi">' + ogretmenadi + '</td><td class="okunmadi">' + dersadi + '</td><td class="okunmadi">' + tanim + '</td><td class="okunmadi">' + teslimtarihi + '</td><td class="okunmadi" style="display:none;">' + aciklama + '</td> <td class="okunmadi" style="display:none;">' + odevid + '</td></tr>');
+                    }
+                    
                 }
                 $("#example").on('click', function () {
                     var table = document.getElementById("example");
@@ -94,19 +105,24 @@ function load() {
                                 return function () {
                                     var rows = $("#location>tr");
                                     // alert(JSON.stringify(rows, null, 4));
-                                    console.log(JSON.stringify(rows, null, 4));
+                                    console.log(JSON.stringify(rows, null, 5));
                                     var cell = row.getElementsByTagName("td")[4];
+                                  var odeviddd = row.getElementsByTagName("td")[5];
 
-                                    var id = cell.innerHTML;
+                                  var id = cell.innerHTML;
+                                  gelenodeviddd = odeviddd.innerHTML;
                                     alert(id);
-
+                                   // alert(gelenodeviddd);
+                                    setTimeout(function () {
+                                        location.reload()
+                                    }, 100);
                                 };
                             };
 
                         currentRow.onclick = createClickHandler(currentRow);
                     }
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevListesiOgrenciveYakin_mbllogin&ogrenciID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&did=' + did + '&cid=' + cid + '&languageID=' + lid + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciOdeviGordu_mbllogin&ogrenciOdevID=' + gelenodeviddd+'&did=' + did + '&cid=' + cid + '&languageID=' + lid + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {

@@ -97,15 +97,15 @@ function load() {
                             $('#sube').empty();
                             for (var j = 0; j < data.length; j++) {
                                 var text = data[j].Aciklama;
-                                var seviyeid = data[j].OgrenciSeviyeID;
+                                var ogrenciid = data[j].OgrenciID;
                                 var dersid = data[j].DersID;
 
-                                $('#sube').append("<option value=" + seviyeid + " >" + text + "</option>");
+                                $('#sube').append("<option value=" + ogrenciid + " >" + text + "</option>");
                             }
                             $("#sube").on('change', function () {
                                 $("#example td").remove();
                                 $.ajax({
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KySubeOgrenciDersListesi_mbllogin&ogrenciSeviyeID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=1&ogrenciID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
@@ -114,15 +114,43 @@ function load() {
                                         var properties = [];
                                         //$('#location').empty();
                                         for (var j = 0; j < data.length; j++) {
-                                            var derssaati = data[j].HaftalikDersSaati;
-                                            var Adi = data[j].DersAdi;
-                                            var bir = data[j].Donem1_DonemNotu;
-                                            var iki = data[j].Donem2_DonemNotu;
-                                            var ys = data[j].YilSonuNotu;
-                                            var selected = data[j].selected;
-                                            $('#example').append('<tr><td>' + Adi + '</td><td>' + derssaati + '</td><td>' + bir + '</td><td>' + iki + '</td><td>' + ys + '</td></tr>');
-                                        }
+                                            var dersadi = data[j].DersAdi;
+                                            var hs = data[j].HaftalikDersSaati;
+                                            var ysp = data[j].YilSonuPuani;
+                                            var y1 = data[j].Yazili1;
+                                            var y2 = data[j].Yazili2;
+                                            var y3 = data[j].Yazili3;
+                                            var y4 = data[j].Yazili4;
+                                            var y5 = data[j].Yazili5;
+                                            var ortaksinav = data[j].Yazili6;
+                                            var perf1 = data[j].Perf1;
+                                            var perf2 = data[j].Perf2;
+                                            var perf3 = data[j].Perf3;
+                                            var u1 = data[j].uygulama1;
+                                            var u2 = data[j].uygulama2;
+                                            var u3 = data[j].uygulama3;
+                                            var prj1 = data[j].Proje1;
+                                            var odv1 = data[j].Odev1;
+                                            var ortalama = data[j].Donem_PuanOrtalamasi;
+                                            var atoplam = data[j].AgirlikliYilSonuNotu;
+                                            var aortalama = data[j].AgirlikliYilsonuPuani;
 
+                                            $('#example').append('<tr><td>' + dersadi + '</td><td class="hs">' + hs + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + ortaksinav + '</td><td>' + perf1 + '</td><td>' + perf2 + '</td><td>' + perf3 + '</td><td>' + u1 + '</td><td>' + u2 + '</td><td>' + u3 + '</td><td>' + prj1 + '</td><td>' + odv1 + '</td><td>' + ortalama + '</td></tr>');
+
+                                            
+                                        }
+                                        var tds = document.getElementById('example').getElementsByTagName('td');
+                                        var sum = 0;
+                                        for (var i = 0; i < tds.length; i++) {
+                                            if (tds[i].className == 'hs') {
+                                                sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                                            }
+                                        }
+                                        document.getElementById('hds').innerHTML = sum;
+                                        document.getElementById('atoplam').innerHTML = atoplam;
+                                        document.getElementById('aortalama').innerHTML = aortalama;
+                                        
+                                           
                                     }
                                 });
                             });

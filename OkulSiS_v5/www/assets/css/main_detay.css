@@ -3765,7 +3765,7 @@ table {
 		@media screen and (max-width: 1680px) {
 
 			#header {
-				padding-top: 2em;
+				padding-top: 5em;
 			}
 
 		}
@@ -3773,7 +3773,7 @@ table {
 		@media screen and (max-width: 736px) {
 
 			#header {
-				padding-top: 1.5em;
+				padding-top: 4em;
 			}
 
 				#header .logo {
@@ -3794,7 +3794,7 @@ table {
 /* Banner */
 
 	#banner {
-		padding: 6em 0 4em 0 ;
+		padding: 1em 0 2em 0 ;
 		display: -moz-flex;
 		display: -webkit-flex;
 		display: -ms-flex;
@@ -3802,7 +3802,7 @@ table {
 	}
 
 		#banner h1 {
-			margin-top: -0.125em;
+			margin-top: -0.12em;
 		}
 
 		#banner .content {
@@ -3878,7 +3878,7 @@ table {
 					-webkit-flex-shrink: 0;
 					-ms-flex-shrink: 0;
 					flex-shrink: 0;
-					margin: 0 0 4em 0;
+					margin: 0 0 1em 0;
 					height: 25em;
 					max-height: 50vh;
 					min-height: 18em;
@@ -4108,4 +4108,10 @@ table {
         .small-box p {
             font-size: 15px;
         }
+}
+.okundu{
+    background-color:aquamarine;
+}
+.okunmadi {
+    background-color: #FFDFE4;
 }

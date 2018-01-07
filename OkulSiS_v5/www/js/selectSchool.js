@@ -34,6 +34,7 @@
             var okuladikisa = "";
             $('#selectSchool').empty();
             for (var j = 0; j < data.length; j++) {
+                rowid = data[j].rowID;
                 text = data[j].OkulAdi;
                 okuladikisa = data[j].OkulAdiKisa;
                  okulid = data[j].OkulID;
@@ -46,18 +47,38 @@
                  did = data[j].did;
                  gelenip = data[j].ip;    
                  rolid = data[j].RolID;
-                 okullogo = data[j].OkulLogo1;
+                 okullogo = data[j].okullogoURL;
                  brans = data[j].brans;
                  kisilogo = data[j].defaultFotoURL;
+                
                  localStorage.setItem("kisilogo", kisilogo);
+                
 
-                 $('#selectSchool').append("<option  data-okuladikisa=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rolid + ">" + text + "</option>");
+                 $('#selectSchool').append("<option data-okullogo=" + okullogo + "  data-okuladikisa=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rowid + ">" + text + "</option>");
           
             }
             $("#selectSchool").on('change', function () {
-              
-                localStorage.setItem("okuladi", $('#selectSchool option:selected').text());
-                localStorage.setItem("okullogo", okullogo);
+                var row = $(this).find('option:selected').attr('value');
+                for (var i = 0; i < data.length; i++) {
+                    if (row == data[i].rowID) {
+                        localStorage.setItem("okuladi", $('#selectSchool option:selected').text());
+                        localStorage.setItem("okullogo", okullogo);
+                        localStorage.setItem("RolID", data[i].RolID);
+                        localStorage.setItem("kurumid", data[i].KurumID);
+                        localStorage.setItem("cid", data[i].cid);
+                        localStorage.setItem("did", data[i].did);
+                        localStorage.setItem("ip", data[i].proxy);
+                        localStorage.setItem("dersyiliid", data[i].DersYiliID);
+                        localStorage.setItem("kisiid", data[i].KisiID);
+                        localStorage.setItem("okulid", data[i].OkulID);
+                        localStorage.setItem("egitimyiliid", data[i].EgitimYilID);
+                        localStorage.setItem("brans", data[i].brans);
+                        localStorage.setItem("okuladikisa", data[i].OkulAdiKisa);
+
+                        window.location.href = "pages/main.html";
+                    }
+                }
+               
                 
                 var proxylist = document.getElementById("proxylist");
                 var cidlist = document.getElementById("proxylist");
@@ -82,22 +103,11 @@
             
                // alert(okulid);
                 //-----------------------------------------------------------
-                localStorage.setItem("RolID", $(this).find('option:selected').attr('value'));
-                localStorage.setItem("kurumid", $(this).find('option:selected').attr('class'));
-                localStorage.setItem("cid", $(this).find('option:selected').attr('data-cid'));
-                localStorage.setItem("did", $(this).find('option:selected').attr('data-did'));
-                localStorage.setItem("ip", $(this).find('option:selected').attr('data-proxy'));
-                localStorage.setItem("dersyiliid", $(this).find('option:selected').attr('data-dersyiliid'));
-                localStorage.setItem("kisiid", $(this).find('option:selected').attr('data-kisiid'));
-                localStorage.setItem("okulid", $(this).find('option:selected').attr('data-okulid'));
-                localStorage.setItem("egitimyiliid", $(this).find('option:selected').attr('data-egitimyiliid'));
-                localStorage.setItem("brans", $(this).find('option:selected').attr('data-brans'));
-                localStorage.setItem("okuladikisa", $(this).find('option:selected').attr('data-okuladikisa'));
-               
-               window.location.href = "pages/main.html";
+            
+            
             });
             if (data.length == 2) {
-                localStorage.setItem("okullogo", okullogo);
+               localStorage.setItem("okullogo", okullogo);
                 localStorage.setItem("okuladi", text);
                 localStorage.setItem("RolID", rolid);
                 localStorage.setItem("kurumid", kurumid);

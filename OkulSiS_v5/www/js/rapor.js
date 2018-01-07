@@ -6,7 +6,7 @@
     console.log(proad);
     var y = document.createElement("IFRAME");
     y.setAttribute("src", proad);
-    y.style.width = "95%";
+    y.style.width = "100%";
     y.style.height = "900px";
     y.style.zIndex = "1000";
     y.style.border = "none";
