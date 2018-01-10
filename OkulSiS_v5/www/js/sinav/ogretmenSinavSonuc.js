@@ -101,9 +101,7 @@ function load() {
                                 var adsoyad = data[j].adsoyad;
                                 var aciklama = data[j].Aciklamasi;
                                 var puan = data[j].Puan;
-                                var ogrenciid = data[j].OgrenciID
-;
-
+                                var ogrenciid = data[j].OgrenciID;
 
                                 $('#giden').append('<tr ><td>' + numarasi + '</td><td>' + adsoyad + '</td><td>' + puan + '</td><td style="display:none;" name="oid" >' + ogrenciid + '</td></tr>');
                             }

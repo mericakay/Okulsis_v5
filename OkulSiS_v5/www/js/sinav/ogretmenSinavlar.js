@@ -82,9 +82,16 @@ function load() {
                     var sinavtarih = data[j].SinavTarihi;
                     var aciklama = data[j].SinavAciklamasi;
                     var sinavturadi = data[j].SinavTurAdi;
+                    var degerlendirildi = data[j].isDegerlendirildi;
+                    if (degerlendirildi == 1) {
+                        $('#sinav').append('<tr><td class="degerlendirildi">' + sinavtarih + '</td><td class="degerlendirildi">' + aciklama + '</td><td class="degerlendirildi">' + sinavturadi + '</td></tr>');
+                    }
+                    else {
+                        $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
 
+                    }
 
-                    $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
+                   
 
                 }
 

@@ -196,18 +196,13 @@ function load() {
                                                                 var sira = data[j].Sira;
                                                                 var sorupuani = data[j].SoruPuani;
                                                                 var soruid = data[j].SinavSoruID;
-                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td><input  name="puan" type="number" onkeyup="AdjustKeyPress(this.value);"  placeholder="Puan"></td><td>' + sorupuani + '</td><td style="display:none;">' + soruid + '</td></tr>');
+                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input  name="puan" type="number" max='+sorupuani+'  placeholder="Puan"></td><td>' + sorupuani + '</td><td style="display:none;">' + soruid + '</td></tr>');
                                                             }
                                                             $("#cevaplar").on('click', 'td', function () {
-                                                                function AdjustKeyPress(value) {
-                                                                    //change max value
-                                                                    var maxValue = sorupuani;
-                                                                    if (value.length > maxValue) {
-                                                                        alert("Girdiğiniz değer soru puanından fazladır..!")
-                                                                    }
-                                                                    
-                                                                }
-
+                                                                alert("asdqad");
+                                                                var input = document.getElementById('maxpuan');
+                                                                alert(iput);
+                                                              
                                                             });
                                                         }
 
