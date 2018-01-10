@@ -111,40 +111,47 @@ function load() {
                                     //$('#location').empty();
                                     for (var j = 0; j < data.length; j++) {
                                         var dersadi = data[j].DersAdi;
-                                            var hs = data[j].HaftalikDersSaati;
-                                            var ysp = data[j].YilSonuPuani;
-                                            var y1 = data[j].Yazili1;
-                                            var y2 = data[j].Yazili2;
-                                            var y3 = data[j].Yazili3;
-                                            var y4 = data[j].Yazili4;
-                                            var y5 = data[j].Yazili5;
-                                            var ortaksinav = data[j].Yazili6;
-                                            var perf1 = data[j].Perf1;
-                                            var perf2 = data[j].Perf2;
-                                            var perf3 = data[j].Perf3;
-                                            var u1 = data[j].uygulama1;
-                                            var u2 = data[j].uygulama2;
-                                            var u3 = data[j].uygulama3;
-                                            var prj1 = data[j].Proje1;
-                                            var odv1 = data[j].Odev1;
-                                            var ortalama = data[j].Donem_PuanOrtalamasi;
-                                            var atoplam = data[j].AgirlikliYilSonuNotu;
-                                            var aortalama = data[j].AgirlikliYilsonuPuani;
+                                        var hs = data[j].HaftalikDersSaati;
+                                        var ysp = data[j].YilSonuPuani;
+                                        var y1 = data[j].Yazili1;
+                                        var y2 = data[j].Yazili2;
+                                        var y3 = data[j].Yazili3;
+                                        var y4 = data[j].Yazili4;
+                                        var y5 = data[j].Yazili5;
+                                        var ortaksinav = data[j].Yazili6;
+                                        var perf1 = data[j].Perf1;
+                                        var perf2 = data[j].Perf2;
+                                        var perf3 = data[j].Perf3;
+                                        var u1 = data[j].uygulama1;
+                                        var u2 = data[j].uygulama2;
+                                        var u3 = data[j].uygulama3;
+                                        var prj1 = data[j].Proje1;
+                                        var odv1 = data[j].Odev1;
+                                        var ortalama = data[j].Donem_PuanOrtalamasi;
+                                        var atoplam1 = data[j].Donem1PuanAgirliklariOrtalamasi;
+                                        var aortalama1 = data[j].Donem1PuanAgirliklariToplami;
+                                        var atoplam2 = data[j].Donem2PuanAgirliklariOrtalamasi;
+                                        var aortalama2 = data[j].Donem2PuanAgirliklariToplami;
+                                        var daltoplam = data[j].YilSonuAlanDalAgirlikToplami;
+                                        var dalortalama = data[j].YilSonuAlanDalPuanAgirliklariOrtalamasi;
 
 
-                                            $('#example').append('<tr><td>' + dersadi + '</td><td class="hs">' + hs + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + ortaksinav + '</td><td>' + perf1 + '</td><td>' + perf2 + '</td><td>' + perf3 + '</td><td>' + u1 + '</td><td>' + u2 + '</td><td>' + u3 + '</td><td>' + prj1 + '</td><td>' + odv1 + '</td><td>' + ortalama + '</td></tr>');
+                                        $('#example').append('<tr><td>' + dersadi + '</td><td class="hs">' + hs + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + ortaksinav + '</td><td>' + perf1 + '</td><td>' + perf2 + '</td><td>' + perf3 + '</td><td>' + u1 + '</td><td>' + u2 + '</td><td>' + u3 + '</td><td>' + prj1 + '</td><td>' + odv1 + '</td><td>' + ortalama + '</td></tr>');
                                     }
                                     var tds = document.getElementById('example').getElementsByTagName('td');
                                     var sum = 0;
                                     for (var i = 0; i < tds.length; i++) {
                                         if (tds[i].className == 'hs') {
                                             sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                                            //alert(sum);
                                         }
                                     }
-                                    document.getElementById('hds').innerHTML = sum;
-                                    document.getElementById('atoplam').innerHTML = atoplam;
-                                    document.getElementById('aortalama').innerHTML = aortalama;
-
+                                    /*  document.getElementById('hds').innerHTML = sum;
+                                      document.getElementById('atoplam1').innerHTML = atoplam1;
+                                      document.getElementById('aortalama1').innerHTML = aortalama1;
+                                      document.getElementById('atoplam2').innerHTML = atoplam2;
+                                      document.getElementById('aortalama2').innerHTML = aortalama2;*/
+                                    $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">' + atoplam1 + '</td><td>' + aortalama1 + '</td><td>' + atoplam2 + '</td><td>' + aortalama2 + '</td><td>' + daltoplam + '</td><td>' + dalortalama + '</td></tr>');
                                 }
                             });
                         } catch (e) {
@@ -192,15 +199,40 @@ function load() {
                                         var y3 = data[j].Yazili3;
                                         var y4 = data[j].Yazili4;
                                         var y5 = data[j].Yazili5;
-                                        var s1 = data[j].Sozlu1;
-                                        var s2 = data[j].Sozlu2;
-                                        var s3 = data[j].Sozlu3;
-                                        var o1 = data[j].Odev1;
-                                        var o2 = data[j].Odev2;
+                                        var ortaksinav = data[j].Yazili6;
+                                        var perf1 = data[j].Perf1;
+                                        var perf2 = data[j].Perf2;
+                                        var perf3 = data[j].Perf3;
+                                        var u1 = data[j].uygulama1;
+                                        var u2 = data[j].uygulama2;
+                                        var u3 = data[j].uygulama3;
+                                        var prj1 = data[j].Proje1;
+                                        var odv1 = data[j].Odev1;
+                                        var ortalama = data[j].Donem_PuanOrtalamasi;
+                                        var atoplam1 = data[j].Donem1PuanAgirliklariOrtalamasi;
+                                        var aortalama1 = data[j].Donem1PuanAgirliklariToplami;
+                                        var atoplam2 = data[j].Donem2PuanAgirliklariOrtalamasi;
+                                        var aortalama2 = data[j].Donem2PuanAgirliklariToplami;
+                                        var daltoplam = data[j].YilSonuAlanDalAgirlikToplami;
+                                        var dalortalama = data[j].YilSonuAlanDalPuanAgirliklariOrtalamasi;
 
-                                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + s1 + '</td><td>' + s2 + '</td><td>' + s3 + '</td><td>' + o1 + '</td><td>' + o2 + '</td><td>' + ysp + '</td></tr>');
+
+                                        $('#example').append('<tr><td>' + dersadi + '</td><td class="hs">' + hs + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + ortaksinav + '</td><td>' + perf1 + '</td><td>' + perf2 + '</td><td>' + perf3 + '</td><td>' + u1 + '</td><td>' + u2 + '</td><td>' + u3 + '</td><td>' + prj1 + '</td><td>' + odv1 + '</td><td>' + ortalama + '</td></tr>');
                                     }
-
+                                    var tds = document.getElementById('example').getElementsByTagName('td');
+                                    var sum = 0;
+                                    for (var i = 0; i < tds.length; i++) {
+                                        if (tds[i].className == 'hs') {
+                                            sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                                           // alert(sum);
+                                        }
+                                    }
+                                    /*  document.getElementById('hds').innerHTML = sum;
+                                      document.getElementById('atoplam1').innerHTML = atoplam1;
+                                      document.getElementById('aortalama1').innerHTML = aortalama1;
+                                      document.getElementById('atoplam2').innerHTML = atoplam2;
+                                      document.getElementById('aortalama2').innerHTML = aortalama2;*/
+                                    $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">' + atoplam1 + '</td><td>' + aortalama1 + '</td><td>' + atoplam2 + '</td><td>' + aortalama2 + '</td><td>' + daltoplam + '</td><td>' + dalortalama + '</td></tr>');
                                 }
                             });
                         } catch (e) {

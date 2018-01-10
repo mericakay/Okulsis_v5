@@ -3,7 +3,8 @@
 
     var lid = 647;
    
-    var tchatirla = localStorage.getItem("tchatirla");
+    var tchatirlaname = localStorage.getItem("tchatirla");
+    var tchatirlapassword = localStorage.getItem("tchatirla");
     localStorage.clear();
     localStorage.setItem("lid", lid);
     try {
@@ -14,7 +15,7 @@
             dataType: 'json',
             crossDomain: true,
             success: function (data) {
-                document.getElementById("password").value = tchatirla;
+                document.getElementById("name").value = tchatirla;
                 var j;
                 var dataSet = [];
                 var properties = [];
@@ -38,7 +39,7 @@
 
             },
             error: function (jqXHR, textStatus, errorThrown) {
-                console.log("request failed" + errorThrown);
+                console.log("Hata" + errorThrown);
             }
         });
 
@@ -64,21 +65,24 @@ $(document).ready(function () {
             type: 'Get',
             dataType: 'json',
             success: function (data) {
-                if (data.lenght !== 0) {
+               
                     var gelen = data[0].adsoyad;
                     var kisiid = data[0].KisiID;
                     var okulid = data[0].okulid;
+                    var description = data[0].description;
+                    var KullaniciKontrol = data[0].KullaniciKontrol;
                     document.getElementsByTagName("P")[0].innerHTML = gelen;
                     localStorage.setItem("tc", username);
                     localStorage.setItem("KullaniciAdi", gelen);
                     localStorage.setItem("gelenid", kisiid, "okulid", okulid);
                     var add = localStorage.getItem("KullaniciAdi");
-
-                    window.location.href = "selectScholl.html";
-                }
-                else {
-                    alert("Hatalı kullanıcı adı ya da şifre")
-                }
+                  //  alert(KullaniciKontrol);
+                    if (KullaniciKontrol > 0) {
+                       window.location.href = "selectScholl.html";
+                    }
+                    else {
+                        alert(description);
+                    }
 
             },
             error: function (textStatus, errorThrown) {

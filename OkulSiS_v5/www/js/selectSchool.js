@@ -32,6 +32,7 @@
             var brans = "";
             var kisilogo = "";
             var okuladikisa = "";
+            var donemID = "";
             $('#selectSchool').empty();
             for (var j = 0; j < data.length; j++) {
                 rowid = data[j].rowID;
@@ -50,11 +51,13 @@
                  okullogo = data[j].okullogoURL;
                  brans = data[j].brans;
                  kisilogo = data[j].defaultFotoURL;
+                 donemID = data[j].DonemID;
+                // alert(donemID);
                 
                  localStorage.setItem("kisilogo", kisilogo);
                 
 
-                 $('#selectSchool').append("<option data-okullogo=" + okullogo + "  data-okuladikisa=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rowid + ">" + text + "</option>");
+                 $('#selectSchool').append("<option data-okullogo=" + okullogo + "  data-donemid=" + donemID + " data-okuladikisa=" + brans + "data-brans=" + brans + " data-did=" + did + " data-kisiid=" + kisiid + " data-egitimyiliid=" + egitimyiliid + " data-okulid=" + okulid + " data-dersyiliid=" + dersyiliid + " data-cid=" + cid + " data-proxy=" + proxy + " id=" + proxylist + " class=" + kurumid + "  value=" + rowid + ">" + text + "</option>");
           
             }
             $("#selectSchool").on('change', function () {
@@ -74,7 +77,7 @@
                         localStorage.setItem("egitimyiliid", data[i].EgitimYilID);
                         localStorage.setItem("brans", data[i].brans);
                         localStorage.setItem("okuladikisa", data[i].OkulAdiKisa);
-
+                        localStorage.setItem("donemID", data[i].DonemID);
                         window.location.href = "pages/main.html";
                     }
                 }
@@ -89,6 +92,7 @@
                 var kisilist = document.getElementById("proxylist");
                 var branslist = document.getElementById("proxylist");
                 var okuladikisalist = document.getElementById("proxylist");
+                var donemidlist = document.getElementById("proxylist");
                 did = didlist.getAttribute("data-did");
                 ip = proxylist.getAttribute("data-proxy");
                 cid = cidlist.getAttribute("data-cid");
@@ -98,6 +102,7 @@
                 egitimyiliid = egitimyiliidlist.getAttribute("data-egitimyiliid");
                 brans = branslist.getAttribute("data-brans");
                 okuladikisa = okuladikisalist.getAttribute("data-okuladikisa");
+                donemID = donemidlist.getAttribute("data-donemid");
                 
               
             
@@ -121,6 +126,7 @@
                 localStorage.setItem("brans", brans);
                 localStorage.setItem("okuladikisa", okuladikisa);
                 var kurumid = localStorage.getItem("kurumid");
+                localStorage.setItem("donemID", donemID);
                 
                 window.location.href = "pages/main.html";
             }
