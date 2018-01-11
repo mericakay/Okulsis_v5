@@ -173,8 +173,6 @@ function load() {
                                                 for (var j = 0; j < data.length; j++) {
                                                     var text = data[j].KitapcikAciklamasi;
                                                     var sinavkitapcikid = data[j].SinavKitapcikID;
-
-
                                                     $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
                                                 }
                                                 $("#kitapciksec").on('change', function () {
