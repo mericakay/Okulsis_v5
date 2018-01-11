@@ -39,6 +39,9 @@ function load() {
     var gelentarih = date + " " + dakka;
     var dvmGec = 0;
     var dvmYok = 0;
+    var varyokvar = "";
+    var varyokyok = "";
+    var varyokgec = "";
 
     try {
         $.ajax({
@@ -69,6 +72,41 @@ function load() {
                     }
 
 
+                }
+            }
+        });
+    } catch (e) {
+        alert(e);
+    }
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=fillVarYokGecTypes_sysSpecificDefinitions&languageID='+lid+'',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // alert("geldi");
+                var j;
+                var len = data.length;
+                var dataSet = [];
+                var properties = [];
+                var url = "";
+                var value = "";
+                var iconclass = "";
+                for (var j = 0; j < data.length; j++) {
+                    console.log(url);
+                    text = data[j].text;
+                    url = data[j].value;
+                    if (url == 0 ) {
+                        varyokvar = "<option value=" + url + ">" + text + "</option>";
+                    }
+                    if (url == 1) {
+                        varyokyok = "<option value=" + url + ">" + text + "</option>";
+                    }
+                    if (url == 2) {
+                        varyokgec = "<option value=" + url + ">" + text + "</option>";
+                    }
+                   
+                   
                 }
             }
         });
@@ -151,7 +189,7 @@ function load() {
                                                 
                                                 var oid = data[i].OgrenciID;
                                                 
-                                                $('#example').append('<tr><td>' + Numarasi + '</td><td>' + Adi + '</td><td> <select id="yokgec"><option>var</option><option>yok</option><option>geç</option> </select></td><td style="display:none;">' + oid + '</td></tr>');
+                                                $('#example').append('<tr><td>' + Numarasi + '</td><td>' + Adi + '</td><td> <select id="yokgec">' + varyokvar + '' + varyokyok + '' + varyokgec +' </select></td><td style="display:none;">' + oid + '</td></tr>');
                                             }
                                         } catch (e) {
                                             alert(e);
@@ -166,8 +204,8 @@ function load() {
                                                     rows.push({
                                                         no: $row.find('td:eq(0)').text(),
                                                         name: $row.find('td:eq(1)').text(),
-                                                        yokgec: $row.find('option:selected').val(),
-                                                       
+                                                        yokgec: $(this).find('option:selected').attr('value'),
+                                                        
                                                         id: $row.find('td:eq(4)').text(),
 
                                                     });
@@ -175,7 +213,7 @@ function load() {
                                                 return JSON.stringify(rows);
                                             };
                                             $(function () {
-                                              //  alert(getJsonFromTable);
+                                                //alert(getJsonFromTable());
                                                 console.log(getJsonFromTable());
                                                 //alert(getJsonFromTable());
                                             });;
