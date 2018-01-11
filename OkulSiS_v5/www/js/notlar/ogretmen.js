@@ -132,8 +132,14 @@ function load() {
                                             var prj1 = data[j].Proje1;
                                             var odv1 = data[j].Odev1;
                                             var ortalama = data[j].Donem_PuanOrtalamasi;
-                                            var atoplam = data[j].AgirlikliYilSonuNotu;
-                                            var aortalama = data[j].AgirlikliYilsonuPuani;
+                                            var atoplam1 = data[j].Donem1PuanAgirliklariOrtalamasi;
+                                            var aortalama1 = data[j].Donem1PuanAgirliklariToplami;
+                                            var atoplam2 = data[j].Donem2PuanAgirliklariOrtalamasi;
+                                            var aortalama2 = data[j].Donem2PuanAgirliklariToplami;
+                                            var daltoplam = data[j].YilSonuAlanDalAgirlikToplami;
+                                            var dalortalama = data[j].Donem_PuanOrtalamasi;
+                                            var puandegerlendirme = data[j].puandegerlendirme;
+                                            var basaribelgesi = data[j].basaribelgesi;
 
                                             $('#example').append('<tr><td>' + dersadi + '</td><td class="hs">' + hs + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + ortaksinav + '</td><td>' + perf1 + '</td><td>' + perf2 + '</td><td>' + perf3 + '</td><td>' + u1 + '</td><td>' + u2 + '</td><td>' + u3 + '</td><td>' + prj1 + '</td><td>' + odv1 + '</td><td>' + ortalama + '</td></tr>');
 
@@ -146,9 +152,8 @@ function load() {
                                                 sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
                                             }
                                         }
-                                        document.getElementById('hds').innerHTML = sum;
-                                        document.getElementById('atoplam').innerHTML = atoplam;
-                                        document.getElementById('aortalama').innerHTML = aortalama;
+                                        $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">' + atoplam1 + '</td><td>' + aortalama1 + '</td><td>' + atoplam2 + '</td><td>' + aortalama2 + '</td><td>' + daltoplam + '</td><td>' + dalortalama + '</td></tr>');
+                                        $('#degerlendirme').append('<tr><td>' + basaribelgesi + '</td><td class="hs">' + puandegerlendirme + '</td>');    
                                         
                                            
                                     }

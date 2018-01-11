@@ -151,7 +151,7 @@ function load() {
                                                 
                                                 var oid = data[i].OgrenciID;
                                                 
-                                                $('#example').append('<tr><td>' + Numarasi + '</td><td>' + Adi + '</td><td><input type="checkbox" name="gec" value="gec"></input></td><td><input type="checkbox" name="yok" value="yok"> </input> </td><td style="display:none;">' + oid + '</td></tr>');
+                                                $('#example').append('<tr><td>' + Numarasi + '</td><td>' + Adi + '</td><td> <select id="yokgec"><option>var</option><option>yok</option><option>geç</option> </select></td><td style="display:none;">' + oid + '</td></tr>');
                                             }
                                         } catch (e) {
                                             alert(e);
@@ -166,8 +166,8 @@ function load() {
                                                     rows.push({
                                                         no: $row.find('td:eq(0)').text(),
                                                         name: $row.find('td:eq(1)').text(),
-                                                        yok: $row.find('td:eq(2) input[type=checkbox]').prop('checked'),
-                                                        gec: $row.find('td:eq(3) input[type=checkbox]').prop('checked'),
+                                                        yokgec: $row.find('option:selected').val(),
+                                                       
                                                         id: $row.find('td:eq(4)').text(),
 
                                                     });
@@ -175,6 +175,7 @@ function load() {
                                                 return JSON.stringify(rows);
                                             };
                                             $(function () {
+                                              //  alert(getJsonFromTable);
                                                 console.log(getJsonFromTable());
                                                 //alert(getJsonFromTable());
                                             });;

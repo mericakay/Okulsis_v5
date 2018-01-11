@@ -4110,11 +4110,14 @@ table {
         }
 }
 .okundu{
-    background-color:aquamarine;
+    background-color:cornflowerblue;
 }
 .okunmadi {
     background-color: #FFDFE4;
 }
 .degerlendirildi {
+    background-color: aquamarine;
+}
+.onaylandi {
     background-color: aquamarine;
 }

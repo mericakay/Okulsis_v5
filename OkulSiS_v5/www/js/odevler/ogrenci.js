@@ -84,15 +84,36 @@ function load() {
                     var aciklama = data[j].Aciklama;
                     var odevid = data[j].OgrenciOdevID;
                     var ogrencigordu = data[j].OgrenciGordu;
-                  //  alert(ogrencigordu);
+                    var onaylandi = data[j].OgrenciOnay;
+                    var l1 = data[j].l1;
+                    var l2 = data[j].l2;
+                    var l3 = data[j].l3;
+                    //  alert(onaylandi);
+                    if (j == 1) {
+                        
+                        $('#lejant').append('<h5 class="okundu" style="float:left; padding-left:5px;">' + l1 + '</h5><h5 class="okunmadi" style="float:left ; padding-left:5px;">' + l2 + '</h5><h5 class="onaylandi" style="float:left ; padding-left:5px;">' + l3 + '</h5>');
+                    }
+                  
                     if (ogrencigordu == 1) {
-                            
-                        $('#example').append('<tr><td class="okundu" >' + ogretmenadi + '</td><td class="okundu">' + dersadi + '</td><td class="okundu">' + tanim + '</td><td class="okundu">' + teslimtarihi + '</td><td class="okundu" style="display:none;">' + aciklama + '</td><td class="okundu"  style="display:none;">' + odevid + '</td></tr>');
+                        if (onaylandi == 1) {
+                            $('#example').append('<tr><td class="onaylandi" >' + ogretmenadi + '</td><td class="onaylandi">' + dersadi + '</td><td class="onaylandi">' + tanim + '</td><td class="onaylandi">' + teslimtarihi + '</td><td class="onaylandi" style="display:none;">' + aciklama + '</td><td class="onaylandi"  style="display:none;">' + odevid + '</td></tr>');
+                        }
+                        else {
+                            $('#example').append('<tr><td class="okundu" >' + ogretmenadi + '</td><td class="okundu">' + dersadi + '</td><td class="okundu">' + tanim + '</td><td class="okundu">' + teslimtarihi + '</td><td class="okundu" style="display:none;">' + aciklama + '</td><td class="okundu"  style="display:none;">' + odevid + '</td></tr>');
+                        }
+                       
                         
                     }
                     else {
-                        $('#example').append('<tr><td class="okunmadi">' + ogretmenadi + '</td><td class="okunmadi">' + dersadi + '</td><td class="okunmadi">' + tanim + '</td><td class="okunmadi">' + teslimtarihi + '</td><td class="okunmadi" style="display:none;">' + aciklama + '</td> <td class="okunmadi" style="display:none;">' + odevid + '</td></tr>');
+                        if (onaylandi == 1) {
+                            $('#example').append('<tr><td class="onaylandi" >' + ogretmenadi + '</td><td class="onaylandi">' + dersadi + '</td><td class="onaylandi">' + tanim + '</td><td class="onaylandi">' + teslimtarihi + '</td><td class="onaylandi" style="display:none;">' + aciklama + '</td><td class="onaylandi"  style="display:none;">' + odevid + '</td></tr>');
+                        }
+                        else {
+                            $('#example').append('<tr><td class="okunmadi">' + ogretmenadi + '</td><td class="okunmadi">' + dersadi + '</td><td class="okunmadi">' + tanim + '</td><td class="okunmadi">' + teslimtarihi + '</td><td class="okunmadi" style="display:none;">' + aciklama + '</td> <td class="okunmadi" style="display:none;">' + odevid + '</td></tr>');
+                        }
+                       
                     }
+                   
                     
                 }
                 $("#example").on('click', function () {

@@ -15,7 +15,7 @@
             dataType: 'json',
             crossDomain: true,
             success: function (data) {
-                document.getElementById("name").value = tchatirla;
+                
                 var j;
                 var dataSet = [];
                 var properties = [];

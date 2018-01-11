@@ -21,6 +21,7 @@ function load() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
+    
 
     try {
         $.ajax({
@@ -71,8 +72,9 @@ function load() {
                 //$('#location').empty();
                 for (var j = 0; j < data.length; j++) {
                     var text = data[j].Tarih;
-                    var kod = data[j].DevamsizlikAdi;
+                    var kod = data[j].Aciklama;
                     var value = data[j].GunKarsiligi;
+                    var alertmessage = data[j].alertmessage;
                     if (j == 1) {
                         var alan1 = data[j].OzurluDevamsiz1;
                         var alan2 = data[j].OzursuzDevamsiz1;
@@ -80,9 +82,17 @@ function load() {
                         var alan4 = data[j].OzursuzDevamsiz2;
                         $('#toplam').append('<tr><td>' + alan1 + '</td><td>' + alan2 + '</td><td>' + alan3 + '</td><td>' + alan4 + '</td></tr>');
                     }
-
-
+                   
                     $('#example').append('<tr><td>' + text + '</td><td>' + value + '</td><td>' + kod + '</td></tr>');
+                    if (alertmessage.length > 10) {
+                  
+                        var headingDiv = document.getElementById("header");
+                        headingDiv.innerHTML = "<H3 style='background-color:red; color: white;'>"+alertmessage+"</H3>";
+                        
+
+                    }
+                    
+
                 }
 
             }
