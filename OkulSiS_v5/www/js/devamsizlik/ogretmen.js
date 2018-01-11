@@ -42,6 +42,7 @@ function load() {
     var varyokvar = "";
     var varyokyok = "";
     var varyokgec = "";
+    var getJsonFromTable = "";
 
     try {
         $.ajax({
@@ -197,7 +198,7 @@ function load() {
                                         
                                         $("#example").on('click', 'td', function () {
 
-                                            var getJsonFromTable = function () {
+                                             getJsonFromTable = function () {
                                                 var rows = [];
                                                 $('#example tbody tr').each(function (i, n) {
                                                     var $row = $(n);
@@ -206,7 +207,7 @@ function load() {
                                                         name: $row.find('td:eq(1)').text(),
                                                         yokgec: $(this).find('option:selected').attr('value'),
                                                         
-                                                        id: $row.find('td:eq(4)').text(),
+                                                        id: $row.find('td:eq(3)').text(),
 
                                                     });
                                                 });
@@ -236,7 +237,23 @@ function load() {
         alert(e);
     }
 
+    $('input[id^="button"]').click(function () {
+ 
 
+        $.ajax({
+            url: 'Slim_Proxy_okulsis/SlimProxyBoot.php?url=InsertDevamsizlik_mbllogin&SinifID=F4201B97-B073-4DD7-8891-8091C3DC82CF&SinifDersID=F664DD5B-13A9-4936-A5AE-141A83FCB426&DersSirasi=1&DonemID=1&DersYiliID=fc4675fc-dafb-4af6-a3c2-7acd22622039&kisiId=1250E188-B635-4418-ABB4-98E8886C707D&DersID=5BE98796-8A96-4871-80AA-CBF5AFCA9E7B&OkulOgretmenID=5BE98796-8A96-4871-80AA-CBF5AFCA9E7B&Tarih=2017-01-02&XmlData='+getJsonFromTable()+'',         
+            type: 'Get',
+            dataType: 'json',
+            success: function (data) {
+                alert("Devamsızlık işleminiz başarı ile kayıt edilmiştir.  ");
+            },
+            error: function (textStatus, errorThrown) {
+                Success = false;//doesnt goes here
+                alert("Beklenmedik Bir Hata Oluştu Lütfen sistem yöneticiniz ile iletişime geçiniz")
+            }
+        });
+
+    })
     //Contenier Son
 };
 
