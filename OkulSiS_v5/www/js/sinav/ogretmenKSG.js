@@ -175,6 +175,78 @@ function load() {
                                                     var sinavkitapcikid = data[j].SinavKitapcikID;
                                                     $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
                                                 }
+                                                if (data.length == 2) {
+                                                    document.getElementById("kitapciksec").style.visibility = "hidden";
+                                                    var sinavidlist = localStorage.getItem("sinavidlist");
+                                                    var sinavdersidlist = localStorage.getItem("sinavdersidlist");
+                                                    $.ajax({
+                                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=' + sinavdersidlist + '&sinavOgrenciID=' + sinavogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                                        type: 'GET',
+                                                        dataType: 'json',
+                                                        success: function (data) {
+
+                                                            var j;
+                                                            var dataSet = [];
+                                                            var properties = [];
+                                                            var puanid = "puan";
+                                                            //$('#location').empty();
+                                                            for (var j = 0; j < data.length; j++) {
+                                                                var sira = data[j].Sira;
+                                                                var sorupuani = data[j].SoruPuani;
+                                                                var soruid = data[j].SinavSoruID;
+                                                                puanid = "puan" +j;
+                                                                // alert(puanid);
+                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                            }
+                                                            $("#cevaplar").on('click', 'td', function () {
+                                                                var table = document.getElementById("cevaplar");
+                                                                var rows = table.getElementsByTagName("tr");
+                                                                for (i = 0; i < rows.length; i++) {
+                                                                    var currentRow = table.rows[i];
+                                                                    var createClickHandler =
+                                                                        function (row) {
+                                                                            return function () {
+                                                                                var rows = $("#location>tr");
+                                                                                // alert(JSON.stringify(rows, null, 4));
+                                                                                console.log(JSON.stringify(rows, null, 5));
+                                                                                var cell = row.getElementsByTagName("td")[4];
+                                                                                var odeviddd = row.getElementsByTagName("td")[4];
+
+                                                                                var id = cell.innerHTML;
+                                                                                gelenodeviddd = odeviddd.innerHTML;
+                                                                               // alert(id);
+                                                                                // alert(gelenodeviddd);
+                                                                              
+                                                                                $(function () {
+                                                                                    // alert(puanid);
+                                                                                   // alert(id);
+                                                                                    var ggg = "#"+id;
+                                                                                   // alert(ggg);
+                                                                                    $(ggg).change(function () {
+                                                                                       // alert(ggg);
+                                                                                        var max = parseInt($(this).attr('max'));
+                                                                                        var min = parseInt($(this).attr('min'));
+                                                                                        if ($(this).val() > max) {
+                                                                                            $(this).val(max);
+                                                                                        }
+                                                                                        else if ($(this).val() < min) {
+                                                                                            $(this).val(min);
+                                                                                        }
+                                                                                    });
+                                                                                });
+
+
+                                                                            };
+                                                                        };
+
+                                                                    currentRow.onclick = createClickHandler(currentRow);
+                                                                }
+                                                                ////////////////////////////////
+                                                            
+                                                            });
+                                                        }
+
+                                                    });}
                                                 $("#kitapciksec").on('change', function () {
                                                     
                                                    
@@ -189,18 +261,33 @@ function load() {
                                                             var j;
                                                             var dataSet = [];
                                                             var properties = [];
+                                                            var puanid = "puan";
                                                             //$('#location').empty();
                                                             for (var j = 0; j < data.length; j++) {
                                                                 var sira = data[j].Sira;
                                                                 var sorupuani = data[j].SoruPuani;
                                                                 var soruid = data[j].SinavSoruID;
-                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input  name="puan" type="number" max='+sorupuani+'  placeholder="Puan"></td><td>' + sorupuani + '</td><td style="display:none;">' + soruid + '</td></tr>');
+                                                                puanid = j;
+                                                               // alert(puanid);
+                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
                                                             }
                                                             $("#cevaplar").on('click', 'td', function () {
-                                                                alert("asdqad");
-                                                                var input = document.getElementById('maxpuan');
-                                                                alert(iput);
-                                                              
+
+
+                                                                ////////////////////////////////
+                                                                $(function () {
+                                                                    alert(puanid);
+                                                                    $(puanid).change(function () {
+                                                                        var max = parseInt($(this).attr('max'));
+                                                                        var min = parseInt($(this).attr('min'));
+                                                                        if ($(this).val() > max) {
+                                                                            $(this).val(max);
+                                                                        }
+                                                                        else if ($(this).val() < min) {
+                                                                            $(this).val(min);
+                                                                        }
+                                                                    });
+                                                                });
                                                             });
                                                         }
 
