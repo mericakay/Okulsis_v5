@@ -29,6 +29,7 @@ function load() {
     //menu başlangıç
 
     try {
+        var menuid = "#menuid";
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
@@ -49,11 +50,15 @@ function load() {
                     value = data[j].value;
                     iconclass = data[j].iconclass;
                     collapse = data[j].collapse;
+                    headerss = data[j].header;
+                    ID = data[j].ID;
+                    menuid + j;
+                    // alert(headerss);
 
                     if (collapse == 1) {
-                        $('#menu ul').append('<span class="opener" onclick="myFunction()" >' + text + '</span>');
+                        $('#menu').append('<span class="opener"  >' + text + '</span>');
                     } else {
-                        $('#menu ul').append('<li><a href="../' + url + ' ">' + text + '</a></li>');
+                        $('#menu').append(' <ul id=' + ID + '><li><a   href="../' + url + '  ">' + text + '</a></li></ul>');
                     }
 
 
@@ -95,6 +100,7 @@ function load() {
                     var aciklama = data[j].SinavAciklamasi;
                     var sinavturadi = data[j].SinavTurAdi;
                     var degerlendirildi = data[j].isDegerlendirildi;
+                    var SinavID = data[j].SinavID;
                     if (degerlendirildi == 1) {
                         $('#sinav').append('<tr><td class="degerlendirildi">' + sinavtarih + '</td><td class="degerlendirildi">' + aciklama + '</td><td class="degerlendirildi">' + sinavturadi + '</td></tr>');
                     }
@@ -103,12 +109,65 @@ function load() {
 
                     }
 
-                   
+
 
                 }
 
             }
-        })
+        });
+        $("#sinav").on('click', 'td', function () {
+            var table = document.getElementById("giden");
+            var rows = table.getElementsByTagName("tr");
+            for (i = 0; i < rows.length; i++) {
+                var currentRow = table.rows[i];
+                var createClickHandler =
+                    function (row) {
+                        return function () {
+                            var rows = $("#location>tr");
+                            // alert(JSON.stringify(rows, null, 4));
+                            console.log(JSON.stringify(rows, null, 4));
+                            var cell = row.getElementsByTagName("td")[3];
+
+                            var id = cell.innerHTML;
+                            localStorage.setItem("secilenogrenciid", id);
+
+                            // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
+                        };
+                    };
+
+                currentRow.onclick = createClickHandler(currentRow);
+            }
+
+
+            try {
+                var secilenogrenciid = localStorage.getItem("secilenogrenciid");
+                // alert(secilenogrenciid);
+                $.ajax({
+                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + secilenogrenciid + '&sinavID=' + sinavid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        var j;
+                        var dataSet = [];
+                        var properties = [];
+                        //$('#location').empty();
+                        for (var j = 0; j < data.length; j++) {
+
+                            var proad = data[j].proad;
+
+                            localStorage.setItem("proad", proad);
+                            window.location.href = "../rapor.html";
+                        }
+
+
+                    }
+                });
+            } catch (e) {
+                alert(e);
+            }
+
+
+        });
     } catch (e) {
         alert(e);
     }

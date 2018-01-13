@@ -33,6 +33,7 @@ function load() {
    
   
     try {
+        var menuid = "#menuid";
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
@@ -53,11 +54,15 @@ function load() {
                     value = data[j].value;
                     iconclass = data[j].iconclass;
                     collapse = data[j].collapse;
+                    headerss = data[j].header;
+                    ID = data[j].ID;
+                    menuid + j;
+                    // alert(headerss);
 
                     if (collapse == 1) {
-                        $('#menu ul').append('<span class="opener" onclick="myFunction()" >' + text + '</span>');
+                        $('#menu').append('<span class="opener"  >' + text + '</span>');
                     } else {
-                        $('#menu ul').append('<li><a href="../' + url + ' ">' + text + '</a></li>');
+                        $('#menu').append(' <ul id=' + ID + '><li><a   href="../' + url + '  ">' + text + '</a></li></ul>');
                     }
 
 
