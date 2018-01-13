@@ -101,11 +101,12 @@ function load() {
                     var sinavturadi = data[j].SinavTurAdi;
                     var degerlendirildi = data[j].isDegerlendirildi;
                     var SinavID = data[j].SinavID;
+                   // alert(SinavID);
                     if (degerlendirildi == 1) {
-                        $('#sinav').append('<tr><td class="degerlendirildi">' + sinavtarih + '</td><td class="degerlendirildi">' + aciklama + '</td><td class="degerlendirildi">' + sinavturadi + '</td></tr>');
+                        $('#sinav').append('<tr><td class="degerlendirildi">' + sinavtarih + '</td><td class="degerlendirildi">' + aciklama + '</td><td class="degerlendirildi">' + sinavturadi + '</td><td style="display:none;" name="oid" >' + SinavID + '</td></tr>');
                     }
                     else {
-                        $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td></tr>');
+                        $('#sinav').append('<tr><td>' + sinavtarih + '</td><td>' + aciklama + '</td><td>' + sinavturadi + '</td><td style="display:none;" name="oid" >' + SinavID + '</td></tr>');
 
                     }
 
@@ -116,9 +117,12 @@ function load() {
             }
         });
         $("#sinav").on('click', 'td', function () {
-            var table = document.getElementById("giden");
+          
+            var table = document.getElementById("sinav");
+            
             var rows = table.getElementsByTagName("tr");
             for (i = 0; i < rows.length; i++) {
+                //alert("2");
                 var currentRow = table.rows[i];
                 var createClickHandler =
                     function (row) {
@@ -129,7 +133,8 @@ function load() {
                             var cell = row.getElementsByTagName("td")[3];
 
                             var id = cell.innerHTML;
-                            localStorage.setItem("secilenogrenciid", id);
+                          
+                            localStorage.setItem("secilensinavid", id);
 
                             // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
                         };
@@ -140,13 +145,15 @@ function load() {
 
 
             try {
-                var secilenogrenciid = localStorage.getItem("secilenogrenciid");
-                // alert(secilenogrenciid);
+               
+                var secilensinavid = localStorage.getItem("secilensinavid");
+               
                 $.ajax({
-                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + secilenogrenciid + '&sinavID=' + sinavid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavSonucListesiRpt_mbllogin&sinavID=' + secilensinavid+'&languageID='+lid+'&cid='+cid+'&did='+did+'',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
+                      //  alert("suc");
                         var j;
                         var dataSet = [];
                         var properties = [];
@@ -154,6 +161,10 @@ function load() {
                         for (var j = 0; j < data.length; j++) {
 
                             var proad = data[j].proad;
+                           // alert(proad);
+                            if (proad == "") {
+                                alert("rapor bulunamamıştır")
+                            }
 
                             localStorage.setItem("proad", proad);
                             window.location.href = "../rapor.html";
