@@ -9,24 +9,27 @@
     <script type="text/javascript" src="js/login.js"></script>
     <script>
         function calc() {
-            var tchatirla = "";
+            var tchatirlaname = "";
+            var tchatirlapassword = "";
             if (document.getElementById('test2').checked) {
                
                 tchatirlaname = $("#name").val();
                 tchatirlapassword = $("#password").val();
-                localStorage.setItem("tchatirla", tchatirla);
+                localStorage.setItem("tchatirlaname", tchatirlaname);
+                localStorage.setItem("tchatirlapassword", tchatirlapassword);
                
                 localStorage.removeItem("KullaniciAdi");
                 localStorage.removeItem("gelenid");
                 localStorage.removeItem("okulid");
-                document.getElementById("test2").checked = true;
+              
             } else {
-                localStorage.clear();
+               // localStorage.clear();
                 localStorage.removeItem("tc");
                 localStorage.removeItem("KullaniciAdi");
                 localStorage.removeItem("gelenid");
                 localStorage.removeItem("okulid");
-                localStorage.removeItem("tchatirla");
+                localStorage.removeItem("tchatirlaname");
+                localStorage.removeItem("tchatirlapassword");
                 
             }
         }
@@ -41,8 +44,8 @@
 
             <input class="formcontrol" id="name" name="name" type="number" min="0" max="11" onkeydown="limit(this);" onkeyup="limit(this);" placeholder="TC Kimlik No">
             <input class="formcontrol" id="password" name="password" type="password" placeholder="Şifre">
-            <input class="testbutton" type="button" id="button1" value="GİRİŞ" /><br /><br />
-            <input type="checkbox" id="test2" name="xxx" onclick="calc();" /><label for="test2">Beni Hatırla..</label>
+            <input class="testbutton" type="button" id="button1" onclick="calc();" value="GİRİŞ" /><br /><br />
+            <input type="checkbox" id="test2" name="xxx"  /><label for="test2">Beni Hatırla..</label>
 
             <p></p>
         </form>

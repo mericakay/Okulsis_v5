@@ -125,6 +125,7 @@ function load() {
                   document.getElementById('atoplam2').innerHTML = atoplam2;
                   document.getElementById('aortalama2').innerHTML = aortalama2;*/
                 $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">' + atoplam1 + '</td><td>' + aortalama1 + '</td><td>' + atoplam2 + '</td><td>' + aortalama2 + '</td><td>' + daltoplam + '</td><td>' + dalortalama + '</td></tr>');
+                $('#degerlendirme').append('<tr><td>' + basaribelgesi + '</td><td class="hs">' + puandegerlendirme + '</td>');    
             }
         });
     } catch (e) {
@@ -134,12 +135,13 @@ function load() {
         $("#example td").remove();
         $("#toplam td").remove();
         $("#degerlendirme td").remove();
-        var secilendonem = document.getElementById("donem").value;
+        var secilendonem = document.getElementById("donem").selectedIndex;
         // alert(secilendonem);
 
-        if (secilendonem === "1.donem") {
+        if (secilendonem === 1) {
 
             gelendonem = 1;
+            
 
 
 

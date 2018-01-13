@@ -3,6 +3,7 @@
    
     var tc = localStorage.getItem("tc");
     var lid = localStorage.getItem("lid");
+    //alert(lid);
     var cid = "";
     var did = "";
     var ip = "";

@@ -21,6 +21,7 @@ function load() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
+    //alert(lid);
     var theDate = new Date();
     var myNewDate = new Date(theDate);
     myNewDate.setDate(myNewDate.getDate());

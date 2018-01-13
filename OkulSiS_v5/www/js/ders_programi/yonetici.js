@@ -15,14 +15,16 @@ function load() {
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
     var dersyiliid = localStorage.getItem("dersyiliid");
+    var did = localStorage.getItem("did");
     var rolid = localStorage.getItem("RolID");
     var ip = localStorage.getItem("ip");
     var kisiadi = localStorage.getItem("KullaniciAdi");
     var lid = localStorage.getItem("lid");
+    var kurumid = localStorage.getItem("kurumid");
     var cid = localStorage.getItem("cid");
-    var did = localStorage.getItem("did");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
-    var gelendonem = 1;
+    var dvmGec = 0;
+    var dvmYok = 0;
 
     try {
         $.ajax({
@@ -59,63 +61,69 @@ function load() {
     } catch (e) {
         alert(e);
     }
-     //contenier başlangıç
+      //contenier başlangıç
+    try {
+        $.ajax({
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinPersonelListesi_mbllogin&sendrolID=7&rolID=4&cid=' + cid + '&did=' + did + '&languageID=' + lid + '&okulID=' + okulid + '',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                // alert("geldi");
+                var j;
+                var len = data.length;
+                var dataSet = [];
+                var properties = [];
+                var url = "";
+                var value = "";
+                var iconclass = "";
+                for (var j = 0; j < data.length; j++) {
+                    console.log(url);
+                    text = data[j].aciklama;
+                    id = data[j].ID;
+                  
 
-    $("#donem").on('change', function () {
-        $("#example td").remove();
-        var secilendonem = document.getElementById("donem").selectedIndex;
-        // alert(secilendonem);
-
-        if (secilendonem === 1) {
-
-            gelendonem = 1;
-
-
-
-        }
-        else {
-            gelendonem = 2;
-
-
-        }
-        try {
-            // alert(ip);
-            $.ajax({
-                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
-                type: 'GET',
-                dataType: 'json',
-                success: function (data) {
-                    var j;
-                    var dataSet = [];
-                    var properties = [];
-                    //$('#location').empty();
-                    for (var j = 0; j < data.length; j++) {
-                        var dersadi = data[j].DersAdi;
-                        var hs = data[j].HaftalikDersSaati;
-                        var ysp = data[j].YilSonuPuani;
-                        var y1 = data[j].Yazili1;
-                        var y2 = data[j].Yazili2;
-                        var y3 = data[j].Yazili3;
-                        var y4 = data[j].Yazili4;
-                        var y5 = data[j].Yazili5;
-                        var s1 = data[j].Sozlu1;
-                        var s2 = data[j].Sozlu2;
-                        var s3 = data[j].Sozlu3;
-                        var o1 = data[j].Odev1;
-                        var o2 = data[j].Odev2;
-
-                        $('#example').append('<tr><td>' + dersadi + '</td><td>' + y1 + '</td><td>' + y2 + '</td><td>' + y3 + '</td><td>' + y4 + '</td><td>' + y5 + '</td><td>' + s1+ '</td><td>' + s2 + '</td><td>' + s3 + '</td><td>' + o1 + '</td><td>' + o2 + '</td><td>' + ysp + '</td></tr>');
-                    }
+                    $('#selectNumber').append("<option value=" + id + ">" + text + "</option>");
 
                 }
-            });
-        } catch (e) {
-            alert(e);
-        }
+                $("#selectNumber").on('change', function () {
+                    $("#example td").remove();
+                    $.ajax({
 
-    });
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenDersProgramiListesi_mbllogin&ogretmenID=' + this.value + '&dersYiliID=' + dersyiliid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&donemID=1',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            var j;
+                            var dataSet = [];
+                            var properties = [];
+                            //$('#location').empty();
+                            for (var j = 0; j < data.length; j++) {
+                                var gun = data[j].aciklama;
+                                var dersadi = data[j].DersAdi;
+                                var sinifkodu = data[j].SinifKodu;
+                                var dersbaslangicbitis = data[j].DersBaslangicBitisSaati;
+                                var Tc = data[j].TCKimlikNo;
+                                var selected = data[j].selected;
+
+                                $('#example').append('<tr><td>' + gun + '</td><td>' + dersadi + '</td><td>' + sinifkodu + '</td><td>' + dersbaslangicbitis + '</td></tr>');
+
+                            }
+
+                        }
+                    });
+                });
+            }
+        });
+    } catch (e) {
+        alert(e);
+    }
+
+  
+
+
     //Contenier Son
 };
+
 function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("example");

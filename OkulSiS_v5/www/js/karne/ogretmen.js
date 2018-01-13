@@ -144,7 +144,7 @@ function load() {
 
 function secilenDonem() {
 
-    if (secilendonem === "1.donem") {
+    if (secilendonem === 1) {
 
         gelendonem = 1;
     }

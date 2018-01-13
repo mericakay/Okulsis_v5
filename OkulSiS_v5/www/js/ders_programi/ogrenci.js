@@ -90,10 +90,10 @@ function load() {
     //contenier başlangıç
     $("#donem").on('change', function () {
         $("#example td").remove();
-        var secilendonem = document.getElementById("donem").value;
+        var secilendonem = document.getElementById("donem").selectedIndex;
         // alert(secilendonem);
 
-        if (secilendonem === "1.donem") {
+        if (secilendonem === 1) {
 
             gelendonem = 1;
 

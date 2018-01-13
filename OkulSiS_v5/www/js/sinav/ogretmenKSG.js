@@ -173,10 +173,13 @@ function load() {
                                                 for (var j = 0; j < data.length; j++) {
                                                     var text = data[j].KitapcikAciklamasi;
                                                     var sinavkitapcikid = data[j].SinavKitapcikID;
-                                                    $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
+                                                    if (j >= 1) {
+                                                        $('#kitapciksec').append("<option value=" + sinavkitapcikid + ">" + text + "</option>");
+                                                    }
+                                                   
                                                 }
                                                 if (data.length == 2) {
-                                                    document.getElementById("kitapciksec").style.visibility = "hidden";
+                                                   
                                                     var sinavidlist = localStorage.getItem("sinavidlist");
                                                     var sinavdersidlist = localStorage.getItem("sinavdersidlist");
                                                     $.ajax({
@@ -196,8 +199,28 @@ function load() {
                                                                 var soruid = data[j].SinavSoruID;
                                                                 puanid = "puan" +j;
                                                                 // alert(puanid);
-                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
                                                             }
+                                                            var tds = document.getElementById('cevaplar').getElementsByTagName('td');
+                                                           
+                                                            var sum = 0;
+                                                            for (var i = 0; i < tds.length; i++) {
+                                                                if (tds[i].className == 'sp') {
+                                                                    sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                                                                    
+                                                                }
+                                                            }
+
+                                                            var tdss = document.getElementById('cevaplar').getElementsByTagName('td');
+                                                            var sum1 = 0;
+                                                            for (var i = 0; i < tdss.length; i++) {
+                                                                if (tdss[i].className == 'op') {
+                                                                    sum1 += isNaN(tdss[i].innerHTML) ? 0 : parseInt(tdss[i].innerHTML);
+
+                                                                }
+                                                            }
+
+                                                            $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">' + sum1+'</td></tr>');
                                                             $("#cevaplar").on('click', 'td', function () {
                                                                 var table = document.getElementById("cevaplar");
                                                                 var rows = table.getElementsByTagName("tr");
@@ -269,8 +292,19 @@ function load() {
                                                                 var soruid = data[j].SinavSoruID;
                                                                 puanid = j;
                                                                // alert(puanid);
-                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
                                                             }
+                                                            var tds = document.getElementById('cevaplar').getElementsByTagName('td');
+                                                            alert("asa");
+                                                            var sum = 0;
+                                                            for (var i = 0; i < tds.length; i++) {
+                                                                if (tds[i].className == 'sp') {
+                                                                    sum += isNaN(tds[i].innerHTML) ? 0 : parseInt(tds[i].innerHTML);
+                                                                    alert(sum);
+                                                                }
+                                                            }
+                                                         
+                                                            $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">asd</td></tr>');
                                                             $("#cevaplar").on('click', 'td', function () {
 
 

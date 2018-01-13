@@ -10,7 +10,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
-    <script src="../../js/notlar/ogrenci.js"></script>
+    <script src="../../js/ders_programi/yonetici.js"></script>
     <link rel="stylesheet" href="../../assets/css/main_detay.css" />
     <!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -26,69 +26,24 @@
 
                 <!-- Header -->
                 <header id="header">
-                    <select id="donem">
-                        <option>Lütfen Dönem Seçiniz</option>
-                        <option>1.Donem</option>
-                        <option>2.donem</option>
-                    </select>
+                    <select id="selectNumber"> </select>
                 </header>
+
                 <!-- Banner -->
                 <section id="banner">
+
                     <table id="example" class="display" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th onclick="sortTable(0)">Ders Adı</th>
-                                <th onclick="sortTable(1)">HS</th>
-                                <th>1.sınav</th>
-                                <th>2.sınav</th>
-                                <th>3.sınav</th>
-                                <th>4.sınav</th>
-                                <th>5.sınav</th>
-                                <th>Ortak SNV</th>
-                                <th>Perf 1</th>
-                                <th>Perf 2</th>
-                                <th>Perf 3</th>
-                                <th>uyglama 1</th>
-                                <th>uyglama 2</th>
-                                <th>uyglama 3</th>
-                                <th>Proje</th>
-                                <th>Ödev</th>
-                                <th>Dönem Puanı</th>
+                                <th>Gün</th>
+                                <th>Ders Adı</th>
+                                <th>Sınıf Kodu </th>
+                                <th>Beşlangıç/Bitiş</th>
                             </tr>
                         </thead>
                     </table>
                 </section>
-                <section>
-                    <table id="toplam" class="display" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>HDS</th>
-                                <th>1.Dön.Ağ.Puan Top.</th>
-                                <th>1.Dön.Ağ. Puan. Ort.</th>
-                                <th>2.Dön.Ağ.Puan Top.</th>
-                                <th>2.Dön.Ağ. Puan. Ort.</th>
-                                <th>Yil Sonu YS. Top.</th>
-                                <th>Yil Sonu YS. Ort.</th>
 
-                            </tr>
-                        </thead>
-                    </table>
-
-
-                </section>
-                <section>
-                    <table id="degerlendirme" class="display" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Başarı Belgesi</th>
-
-                                <th>Puan Değerlendirmesi</th>
-                            </tr>
-                        </thead>
-                    </table>
-
-
-                </section>
             </div>
         </div>
 

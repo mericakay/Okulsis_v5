@@ -3,10 +3,18 @@
 
     var lid = 647;
    
-    var tchatirlaname = localStorage.getItem("tchatirla");
-    var tchatirlapassword = localStorage.getItem("tchatirla");
+    var tchatirlaname = localStorage.getItem("tchatirlaname");
+    var tchatirlapassword = localStorage.getItem("tchatirlapassword");
+    if (tchatirlaname != null) {
+        //alert("bb");
+        document.getElementById("name").value = tchatirlaname;
+        document.getElementById("password").value = tchatirlapassword;
+        document.getElementById("test2").checked = true;
+
+    }
     localStorage.clear();
     localStorage.setItem("lid", lid);
+  
     try {
         $.ajax({
 
