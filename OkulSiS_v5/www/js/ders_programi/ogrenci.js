@@ -25,6 +25,8 @@ function load() {
     var did = localStorage.getItem("did");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
     var gelendonem = localStorage.getItem("donemID");
+    var headername = localStorage.getItem("headername");
+    document.getElementsByTagName("P")[0].innerHTML = headername;
    
     try {
         $.ajax({
@@ -56,6 +58,17 @@ function load() {
 
 
                 }
+                $('#menu ul').on('touchstart click', function () {
+                    // alert(this.id);
+                    var row = this.id;
+                    for (var i = 0; i < data.length; i++) {
+                        if (row == data[i].ID) {
+
+                            localStorage.setItem("headername", data[i].header);
+                        }
+                    }
+
+                });
             }
         });
     } catch (e) {

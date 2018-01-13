@@ -24,6 +24,8 @@ function load() {
     var did = localStorage.getItem("did");
    // alert(okulid);
     //menu başlangıç
+    var headername = localStorage.getItem("headername");
+    document.getElementsByTagName("P")[0].innerHTML = headername;
     
     document.getElementById("cmb3").style.visibility = "hidden";
     document.getElementById("cmb2").style.visibility = "hidden";
@@ -60,6 +62,17 @@ function load() {
 
 
                 }
+                $('#menu ul').on('touchstart click', function () {
+                    // alert(this.id);
+                    var row = this.id;
+                    for (var i = 0; i < data.length; i++) {
+                        if (row == data[i].ID) {
+
+                            localStorage.setItem("headername", data[i].header);
+                        }
+                    }
+
+                });
             }
         });
     } catch (e) {

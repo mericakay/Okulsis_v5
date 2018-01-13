@@ -26,6 +26,8 @@ function load() {
     var myNewDate = new Date(theDate);
     myNewDate.setDate(myNewDate.getDate());
     document.getElementById("myDate").valueAsDate = myNewDate;
+    var headername = localStorage.getItem("headername");
+    document.getElementsByTagName("P")[0].innerHTML = headername;
  try {
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
@@ -56,6 +58,17 @@ function load() {
 
 
                 }
+                $('#menu ul').on('touchstart click', function () {
+                    // alert(this.id);
+                    var row = this.id;
+                    for (var i = 0; i < data.length; i++) {
+                        if (row == data[i].ID) {
+
+                            localStorage.setItem("headername", data[i].header);
+                        }
+                    }
+
+                });
             }
         });
     } catch (e) {

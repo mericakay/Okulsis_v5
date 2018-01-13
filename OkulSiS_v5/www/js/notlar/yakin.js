@@ -21,6 +21,8 @@ function load() {
     var lid = localStorage.getItem("lid");
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
+    var headername = localStorage.getItem("headername");
+    document.getElementsByTagName("P")[0].innerHTML = headername;
     //menu başlangıç
     var gelendonem = 1;
     try {
@@ -53,6 +55,17 @@ function load() {
 
 
                 }
+                $('#menu ul').on('touchstart click', function () {
+                    // alert(this.id);
+                    var row = this.id;
+                    for (var i = 0; i < data.length; i++) {
+                        if (row == data[i].ID) {
+
+                            localStorage.setItem("headername", data[i].header);
+                        }
+                    }
+
+                });
             }
         });
     } catch (e) {

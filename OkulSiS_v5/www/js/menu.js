@@ -33,11 +33,15 @@ function load() {
    // alert(brans);
  
     var cid = localStorage.getItem("cid");
-    document.getElementsByTagName("P")[0].innerHTML = okuladikisa + brans + kisiadi  ;
+    document.getElementsByTagName("P")[0].innerHTML = okuladikisa + brans + kisiadi;
+
+    var headername = ""; 
+    
    
   //  alert(ip);
     //menu başlangıç
     try {
+        var menuid = "#menuid";
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid +'&did='+did+'',
             type: 'GET',
@@ -58,15 +62,30 @@ function load() {
                     value = data[j].value;
                     iconclass = data[j].iconclass;
                     collapse = data[j].collapse;
+                    headerss = data[j].header;
+                    ID = data[j].ID;
+                    menuid + j;
+                   // alert(headerss);
                     
                     if (collapse == 1) {
-                        $('#menu ul').append('<span class="opener" onclick="myFunction()" >' + text + '</span>');
+                        $('#menu').append('<span class="opener"  >' + text + '</span>');
                     } else {
-                        $('#menu ul').append('<li><a href="' + url + '  ">' + text + '</a></li>');
+                        $('#menu').append(' <ul id=' + ID + '><li><a   href="' + url + '  ">' + text + '</a></li></ul>');
                     }
                   
-
+                    
                 }
+                $('#menu ul').on('touchstart click', function () {
+                   // alert(this.id);
+                    var row = this.id;
+                    for (var i = 0; i < data.length; i++) {
+                        if (row == data[i].ID) {
+
+                            localStorage.setItem("headername", data[i].header);
+                        }
+                    }
+
+                });
             }
         });
     } catch (e) {
@@ -106,7 +125,10 @@ function load() {
 
                 
             }
+          //  $('.row').on('touchstart click', function () { alert("aa") });
+          
         }
+       
     });
     // Dashboard son  <input class="testbutton" type="button" id="button1" value="Gönder">
 
