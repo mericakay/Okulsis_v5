@@ -107,19 +107,19 @@ function load() {
             var value = "";
             var iconclass = "";
             for (var j = 0; j < data.length; j++) {
-                text = data[j].MenuAdi;            
+                text = data[j].dbMenuAdi;            
                 url = data[j].URL;
                
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
                 ImageURL = data[j].ImageURL;
                // alert(value);
-                if (value == 00 ) {
-                    $('.row').append('<a href=' + url + ' style="position:static; font-size:10px; color:white;" id="dashboardiconnew"><img id="float:left" src="' + ImageURL + '">' + value + '</a>');
+                if (value == "00") {
+                    $('.row').append('<button class="square-button"><img class="small-img" src="' + ImageURL+'"/><br/><span class="button-text">' + text+'</span> </input></button>');
                 }
                 else {
 
-                    $('.row').append('<a href=' + url + ' style="position:static; font-size:10px;" id="dashboardiconnew"><img id="float:left" src="' + ImageURL + '">' + value + '</a>');
+                    $('.row').append('<button class="square-button"><img class="small-img" src="' + ImageURL + '"/><br/><span class="button-text">' + text +'</span> </input></button>');
                 }
 
 
