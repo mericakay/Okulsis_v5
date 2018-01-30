@@ -12,6 +12,7 @@
         document.getElementById("test2").checked = true;
 
     }
+   
     localStorage.clear();
     localStorage.setItem("lid", lid);
   
@@ -39,6 +40,7 @@
                 $("#selectLanguage").on('change', function () {
 
                     lid = this.value;
+                 //   alert(lid);
 
                     localStorage.setItem("lid", lid);
 
@@ -60,7 +62,15 @@
 $(document).ready(function () {
     
 ;    $('input[id^="button"]').click(function () {
+    if ($("#name").val() == '') {
+        alert("Lütfen,TC Kimlik Numaranızı giriniz.");
+        return false;
+    }
 
+    if ($("#password").val() == '') {
+        alert("Lütfen, Şifrenizi Giriniz.");
+        return false;
+    }
         username = $("#name").val();
         sifre = $("#password").val();
         var ip = localStorage.getItem("proxy");

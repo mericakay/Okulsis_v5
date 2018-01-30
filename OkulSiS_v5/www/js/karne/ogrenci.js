@@ -28,7 +28,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -98,7 +98,7 @@ function load() {
         try {
             // alert(ip);
             $.ajax({
-                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciKarnesi_mbllogin&donemID=' + gelendonem + '&ogrenciID=' + kisiid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                 type: 'GET',
                 dataType: 'json',
                 success: function (data) {

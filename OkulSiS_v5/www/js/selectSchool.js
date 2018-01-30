@@ -10,9 +10,9 @@
     var dersyiliid = "";
     var kisiid = "";
 
-   
+    //alert(lid);
     $.ajax({
-        url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin&languageID=' + lid + '',
+        url: 'http://mobile.okulsis.net:8280/Slim_Proxy_okulsis/SlimProxyBoot.php?tc=' + tc + '&url=mobilfirstdata_mbllogin&lid=' + lid + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {

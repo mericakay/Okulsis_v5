@@ -31,7 +31,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -85,7 +85,7 @@ function load() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinPersonelListesi_mbllogin&sendrolID=7&rolID=4&cid=' + cid + '&did=' + did + '&languageID=' + lid + '&okulID=' + okulid + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinPersonelListesi_mbllogin&sendrolID=7&rolID=4&cid=' + cid + '&did=' + did + '&lid=' + lid + '&okulID=' + okulid + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -107,7 +107,7 @@ function load() {
                 }
                 $("#selectTeacher").on('change', function () {
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + this.value + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '&grid=0',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + this.value + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '&grid=0',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -127,7 +127,7 @@ function load() {
                                 // localStorage.setItem("sinavid", sinavid);
                                 $("#giden td").remove();
                                 $.ajax({
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=' + this.value + '&donemID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&grid=1',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrencilerinAldigiNotlarSinavBazli_mbllogin&sinavID=' + this.value + '&donemID=1&cid=' + cid + '&lid=' + lid + '&did=' + did + '&grid=1',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
@@ -177,7 +177,7 @@ function load() {
                                     var secilenogrenciid = localStorage.getItem("secilenogrenciid");
                                     // alert(secilenogrenciid);
                                     $.ajax({
-                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + secilenogrenciid + '&sinavID=' + sinavid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + secilenogrenciid + '&sinavID=' + sinavid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
                                         type: 'GET',
                                         dataType: 'json',
                                         success: function (data) {

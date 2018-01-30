@@ -35,7 +35,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -86,7 +86,7 @@ function load() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo1_mbllogin&kisiId=' + kisiid + '&kurumID=' + kurumid + '&rolID=' + rolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo1_mbllogin&kisiId=' + kisiid + '&kurumID=' + kurumid + '&rolID=' + rolid + '&cid=' + cid + '&lid=' + lid + '&did=' + did +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -115,7 +115,7 @@ function load() {
                         x.multiple = false
                     }
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo2_mbllogin&kisiId=' + kisiid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&lid=' + lid + '&did=' + did +'',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
@@ -137,7 +137,7 @@ function load() {
                                 document.getElementById("cmb3").style.visibility = "visible";
                                 if (this.value == 1) {
                                 $.ajax({
-                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid+'&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+                                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo3_mbllogin&kisiId=' + kisiid + '&okulid=' + okulid + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid+'&cid=' + cid + '&lid=' + lid + '&did=' + did +'',
                                     type: 'GET',
                                     dataType: 'json',
                                     success: function (data) {
@@ -169,7 +169,7 @@ function load() {
                                    // alert(this.value);
                                     if (this.value == 1) {
                                         $.ajax({
-                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Msjcombo4_mbllogin&kisiId=' + kisiid + '&sinifID=' + show + '&rolID=' + rolid + '&sendrolID=' + gelensendrolid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                                             type: 'GET',
                                             dataType: 'json',
                                             success: function (data) {
@@ -218,7 +218,7 @@ function load() {
         var kime = localStorage.getItem("show");
         var msgtip = localStorage.getItem("mesajtipid");
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=1&cid=' + cid + '&languageID=' + lid + '&did=' + did +'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SendMesajDefault_mbllogin&konu=' + konu + '&mesaj=' + mesaj + '&kisiId=' + kisiid + '&receiveKisiID=' + kime + '&mesajTipID=1&cid=' + cid + '&lid=' + lid + '&did=' + did +'',
             data: {
                 konu: $("#lname").val(),
                 mesaj: $("#fmesaj").val(),

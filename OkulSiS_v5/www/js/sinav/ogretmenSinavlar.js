@@ -31,7 +31,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -87,7 +87,7 @@ function load() {
     try {
         $.ajax({
 
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '&grid=1',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '&grid=1',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -149,7 +149,7 @@ function load() {
                 var secilensinavid = localStorage.getItem("secilensinavid");
                
                 $.ajax({
-                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavSonucListesiRpt_mbllogin&sinavID=' + secilensinavid+'&languageID='+lid+'&cid='+cid+'&did='+did+'',
+                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavSonucListesiRpt_mbllogin&sinavID=' + secilensinavid+'&lid='+lid+'&cid='+cid+'&did='+did+'',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {

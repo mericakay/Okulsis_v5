@@ -29,7 +29,7 @@ function load() {
     var ip = localStorage.getItem("ip");
     var kisiadi = "<span>" + localStorage.getItem("KullaniciAdi") + "&nbsp; </span>";
     var lid = localStorage.getItem("lid");
-    var brans = "</br></br></br><span style='padding-top:10px; '>&nbsp;&nbsp;" + localStorage.getItem("brans") + "&nbsp;</span>";
+    var brans = "</br></br></br><span style='padding-top:10px; '>&nbsp;&nbsp;" + localStorage.getItem("brans") + "&nbsp;</span></br>";
    // alert(brans);
  
     var cid = localStorage.getItem("cid");
@@ -43,7 +43,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid +'&did='+did+'',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid +'&did='+did+'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -96,7 +96,7 @@ function load() {
 
     //dashboard başlangıç
    $.ajax({
-       url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did +'',
+       url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did +'',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -113,30 +113,37 @@ function load() {
                 value = data[j].adet;
                 iconclass = data[j].iconclass;
                 ImageURL = data[j].ImageURL;
+                headersss = data[j].header;
+             //   alert(headersss);
                // alert(value);
                 if (value == "00") {
-                    $('.row').append('<button class="square-button"><img class="small-img" src="' + ImageURL+'"/><br/><span class="button-text">' + text+'</span> </input></button>');
+                    $('.row').append('<a href="' + url + '"  value="' + headersss + '"><button  value="' + headersss +'" class="square-button"><img class="small-img" src="' + ImageURL + '"/><br/><span class="button-text">' + text +'</span></button></a>');
                 }
                 else {
 
-                    $('.row').append('<button class="square-button"><img class="small-img" src="' + ImageURL + '"/><br/><span class="button-text">' + text +'</span> </input></button>');
+                    $('.row').append('<a href="' + url + '"  value="' + headersss + '"><button  value="' + headersss +'" class="square-button"><img class="small-img" src="' + ImageURL + '"/><br/><span class="button-text">' + text +'</span></button></a>');
                 }
 
 
                 
             }
-          //  $('.row').on('touchstart click', function () { alert("aa") });
+            $('.row button').on('touchstart click', function () {
+
+                localStorage.setItem("headername", this.value);
+            });
           
         }
        
     });
+
+ 
     // Dashboard son  <input class="testbutton" type="button" id="button1" value="Gönder">
 
     //contenier başlangıç
  
 
    /* $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&languageID=' + lid + '&cid=' + cid +'',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=DashboarddataDersProgrami_mbllogin&kisiId=' + kisiid + '&rolId=' + rolid + '&lid=' + lid + '&cid=' + cid +'',
             type: 'GET',
             dataType: 'json',
             success: function (data) {

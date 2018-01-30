@@ -35,7 +35,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -92,7 +92,7 @@ function load() {
 
     //Klasik Puan Girişi
     $.ajax({
-        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=Ogretmensinavlistesi_mbllogin&ogretmenID=' + kisiid + '&egitimYilID=' + egitimyiliid + '&okulID=' + okulid + '&kisiID=' + kisiid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
@@ -122,7 +122,7 @@ function load() {
                 $('#kitapciksec').empty();
                 $("#cevaplar td").remove();
                 $.ajax({
-                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=' + sinavidlist + '&okulID=' + okulid + '&ogretmenID=' + kisiid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                    url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavaGirenSubeler_mbllogin&sinavID=' + sinavidlist + '&okulID=' + okulid + '&ogretmenID=' + kisiid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                     type: 'GET',
                     dataType: 'json',
                     success: function (data) {
@@ -151,7 +151,7 @@ function load() {
                             localStorage.setItem("sinavokulidgelen", sinavokulidgelen);
                             $("#cevaplar td").remove();
                             $.ajax({
-                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=' + this.value + '&sinifKodu=' + girensubler + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=TopluOgrenciCevap_mbllogin&sinavOkulID=' + this.value + '&sinifKodu=' + girensubler + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                                 type: 'GET',
                                 dataType: 'json',
                                 success: function (data) {
@@ -179,7 +179,7 @@ function load() {
                                         sinavogrenciid=  localStorage.getItem("sinavogrenciid");
                                         
                                         $.ajax({
-                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SinavdaKullanilanKitaplar_mbllogin&sinavOkulID=' + sinavokulidgelenler + '&sinifKodu=' + SinifKodu + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=SinavdaKullanilanKitaplar_mbllogin&sinavOkulID=' + sinavokulidgelenler + '&sinifKodu=' + SinifKodu + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                                             type: 'GET',
                                             dataType: 'json',
                                             success: function (data) {
@@ -199,8 +199,9 @@ function load() {
                                                    
                                                     var sinavidlist = localStorage.getItem("sinavidlist");
                                                     var sinavdersidlist = localStorage.getItem("sinavdersidlist");
+                                                     $("#cevaplar td").remove();
                                                     $.ajax({
-                                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=' + sinavdersidlist + '&sinavOgrenciID=' + sinavogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=' + sinavdersidlist + '&sinavOgrenciID=' + sinavogrenciid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                                                         type: 'GET',
                                                         dataType: 'json',
                                                         success: function (data) {
@@ -293,7 +294,7 @@ function load() {
                                                     var sinavidlist = localStorage.getItem("sinavidlist");
                                                     var sinavdersidlist = localStorage.getItem("sinavdersidlist");
                                                     $.ajax({
-                                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=' + sinavdersidlist + '&sinavOgrenciID=' + sinavogrenciid + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                                                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgretmenSinavSorulariKDK_mbllogin&sinavDersID=' + sinavdersidlist + '&sinavOgrenciID=' + sinavogrenciid + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                                                         type: 'GET',
                                                         dataType: 'json',
                                                         success: function (data) {
@@ -312,7 +313,7 @@ function load() {
                                                                 $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
                                                             }
                                                             var tds = document.getElementById('cevaplar').getElementsByTagName('td');
-                                                            alert("asa");
+                                                           // alert("asa");
                                                             var sum = 0;
                                                             for (var i = 0; i < tds.length; i++) {
                                                                 if (tds[i].className == 'sp') {
@@ -322,12 +323,12 @@ function load() {
                                                             }
                                                          
                                                             $('#toplam').append('<tr><td>' + sum + '</td><td class="hs">asd</td></tr>');
-                                                            $("#cevaplar").on('click', 'td', function () {
+                                                            $("#cevaplar").on(' touchstart click', 'td', function () {
 
 
                                                                 ////////////////////////////////
                                                                 $(function () {
-                                                                    alert(puanid);
+                                                                   // alert(puanid);
                                                                     $(puanid).change(function () {
                                                                         var max = parseInt($(this).attr('max'));
                                                                         var min = parseInt($(this).attr('min'));

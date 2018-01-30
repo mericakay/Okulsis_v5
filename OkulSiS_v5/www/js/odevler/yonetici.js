@@ -28,7 +28,7 @@ function load() {
     try {
         var menuid = "#menuid";
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&languageID=' + lid + '&cid=' + cid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=mobilMenu_mbllogin&RolID=' + rolid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -82,7 +82,7 @@ function load() {
     //contenier başlangıç
     try {
         $.ajax({
-            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+            url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=MsjIcinOkulListesi_mbllogin&sendrolID=4&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -99,7 +99,7 @@ function load() {
                 $("#sube").on('change', function () {
                     $("#example td").remove();
                     $.ajax({
-                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KyOgretmenOdevListeleri_mbllogin&okulID=' + this.value + '&cid=' + cid + '&languageID=' + lid + '&did=' + did + '',
+                        url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=KyOgretmenOdevListeleri_mbllogin&okulID=' + this.value + '&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
                         type: 'GET',
                         dataType: 'json',
                         success: function (data) {
