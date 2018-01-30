@@ -130,7 +130,7 @@ function load() {
                                 // alert(sinifid);
                                 $('#multi-select-demo').append("<option value=" + ogrenciid + ">" + text + "</option>");
                             }
-                            $('#multi-select-demo').on('change', function () {
+                            $('#multi-select-demo').on('touchstart change', function () {
 
                                 $("#multi-select-demo :selected").each(function (i, sel) {
                                     var values = document.getElementById("multi-select-demo").selectedIndex;;
@@ -217,7 +217,7 @@ function load() {
             dataType: 'json',
             success: function (data) {
                 if (data.lenght !== 0) {
-                    alert("Mesajınız Başarıyla iletilmiştir");
+                    alert("Ödevleriniz Başarı ile gönderilmiştir");
                 }
                 else {
                     alert("Beklenmeyen Hata Oluştu Lütfen daha sonra tekrar deneyiniz")
