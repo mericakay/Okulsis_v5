@@ -11,7 +11,8 @@ function load() {
             $(this).children('i:last-child').toggleClass('fa-caret-down fa-caret-left');
         }
     });
-    
+
+
 
     var okulid = localStorage.getItem("okulid");
     var kisiid = localStorage.getItem("kisiid");
@@ -130,15 +131,14 @@ function load() {
                                 // alert(sinifid);
                                 $('#multi-select-demo').append("<option value=" + ogrenciid + ">" + text + "</option>");
                             }
-                            $('#multi-select-demo').on('touchstart change', function () {
+                            $('#multi-select-demo').on('change', function () {
+                               // alert("as");
 
-                                $("#multi-select-demo :selected").each(function (i, sel) {
-                                    var values = document.getElementById("multi-select-demo").selectedIndex;;
-                                   // alert(values);
-                                    if (values == 1) {
-                                        $('#multi-select-demo option').prop('selected', true);
-                                    }
-                                });
+                                if ($("#multi-select-demo option").length == $("#multi-select-demo option:selected").length) {
+                                    $("#checkallusers").prop("checked", true);
+                                } else {
+                                    $("#checkallusers").removeAttr("checked");
+                                }
                                 
                                
                                 var arr = $(this).val();
@@ -162,6 +162,23 @@ function load() {
         alert(e);
     }
 
+    $("#checkallusers").change(function () {
+       // alert("asd");
+        var checked = $(this).is(':checked'); // Checkbox state
+
+        // Select all
+        if (checked) {
+            $('#multi-select-demo option').each(function () {
+                $(this).prop('selected', true);
+            });
+        } else {
+            // Deselect All
+            $('#multi-select-demo option').each(function () {
+                $(this).prop('selected', false);
+            });
+        }
+
+    });
     try {
         $.ajax({
             url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OdevTipleri_mbllogin&cid=' + cid + '&lid=' + lid + '&did=' + did + '',
