@@ -162,13 +162,67 @@ function load() {
             for (var j = 0; j < data.length; j++) {
                 var aciklamasi = data[j].Aciklamasi;
                 var puan = data[j].Puan;
+                var sinavid = data[j].SinavID;
 
 
 
-                $('#sonuc').append('<tr><td>' + aciklamasi + '</td><td>' + puan + '</td></tr>');
+                $('#sonuc').append('<tr><td>' + aciklamasi + '</td><td>' + puan + '</td><td style="display:none;" name="oid" >' + sinavid + '</td></tr>');
             }
 
         }
+    });
+    $("#sonuc").on('click', 'td', function () {
+        var table = document.getElementById("sonuc");
+        var rows = table.getElementsByTagName("tr");
+        for (i = 0; i < rows.length; i++) {
+            var currentRow = table.rows[i];
+            var createClickHandler =
+                function (row) {
+                    return function () {
+                        var rows = $("#location>tr");
+                        // alert(JSON.stringify(rows, null, 4));
+                        console.log(JSON.stringify(rows, null, 4));
+                        var cell = row.getElementsByTagName("td")[2];
+
+                        var id = cell.innerHTML;
+                        localStorage.setItem("secilensinavid", id);
+
+                        // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
+                    };
+                };
+
+            currentRow.onclick = createClickHandler(currentRow);
+        }
+
+
+        try {
+            var secilensinavid = localStorage.getItem("secilensinavid");
+            // alert(secilenogrenciid);
+            $.ajax({
+                url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + kisiid + '&sinavID=' + secilensinavid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
+                type: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    var j;
+                    var dataSet = [];
+                    var properties = [];
+                    //$('#location').empty();
+                    for (var j = 0; j < data.length; j++) {
+
+                        var proad = data[j].proad;
+
+                        localStorage.setItem("proad", proad);
+                        window.location.href = "../rapor.html";
+                    }
+
+
+                }
+            });
+        } catch (e) {
+            alert(e);
+        }
+
+
     });
 
 
