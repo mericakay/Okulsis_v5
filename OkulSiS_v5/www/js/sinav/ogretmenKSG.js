@@ -215,9 +215,18 @@ function load() {
                                                                 var sira = data[j].Sira;
                                                                 var sorupuani = data[j].SoruPuani;
                                                                 var soruid = data[j].SinavSoruID;
+                                                                var aldigipuan = data[j].AldigiPuan;
+                                                                var onay = data[j].Onay;
+                                                                alert(onay);
                                                                 puanid = "puan" +j;
                                                                 // alert(puanid);
-                                                                $('#cevaplar').append('<tr><td>' + sira + '</td><td id="maxpuan"><input class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                if (onay == "0") {
+                                                                    $('#cevaplar').append('<tr class="onayli"><td>' + sira + '</td><td id="maxpuan"><input class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td class="ap" id="aldigipuan" >' + aldigipuan + '</td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                }
+                                                                else {
+                                                                    $('#cevaplar').append('<tr class="onaysiz"><td>' + sira + '</td><td id="maxpuan"><input style="display:none;" class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td> <td class="ap" id="aldigipuan" >' + aldigipuan + '</td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                }
+                                                               
                                                             }
                                                             var tds = document.getElementById('cevaplar').getElementsByTagName('td');
                                                            
