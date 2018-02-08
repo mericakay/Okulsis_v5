@@ -25,7 +25,7 @@ function load() {
     var cid = localStorage.getItem("cid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
     var headername = localStorage.getItem("headername");
-    document.getElementsByTagName("P")[0].innerHTML = headername;
+  //  document.getElementsByTagName("P")[0].innerHTML = headername;
 
     //menu başlangıç
 
@@ -121,6 +121,11 @@ function load() {
                                 var ogrencigordu = data[j].OgrenciGordu;
                                 var odevid = data[j].OgrenciOdevID;
                                 //  alert(ogrencigordu);
+                                if (j == 1) {
+
+                                    $('#lejant').append('<h5 class="okundu" style="float:left; padding-left:5px;">' + l1 + '</h5><h5 class="okunmadi" style="float:left ; padding-left:5px;">' + l2 + '</h5><h5 class="onaylandi" style="float:left ; padding-left:5px;">' + l3 + '</h5>');
+                                }
+
                                 if (ogrencigordu == 1) {
 
                                     $('#example').append('<tr><td class="okundu" >' + ogretmenadi + '</td><td class="okundu">' + dersadi + '</td><td class="okundu">' + tanim + '</td><td class="okundu">' + teslimtarihi + '</td><td class="okundu" style="display:none;">' + aciklama + '</td><td class="okundu"  style="display:none;">' + odevid + '</td></tr>');

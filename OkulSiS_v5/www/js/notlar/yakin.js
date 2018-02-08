@@ -22,7 +22,7 @@ function load() {
     var cid = localStorage.getItem("cid");
     var did = localStorage.getItem("did");
     var headername = localStorage.getItem("headername");
-    document.getElementsByTagName("P")[0].innerHTML = headername;
+   // document.getElementsByTagName("P")[0].innerHTML = headername;
     //menu başlangıç
     var gelendonem = 1;
    try {

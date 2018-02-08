@@ -216,15 +216,16 @@ function load() {
                                                                 var sorupuani = data[j].SoruPuani;
                                                                 var soruid = data[j].SinavSoruID;
                                                                 var aldigipuan = data[j].AldigiPuan;
+                                                                var ogrencialdigipuan = data[j].OgrenciSoruPuani;
                                                                 var onay = data[j].Onay;
-                                                                alert(onay);
+                                                                //alert(onay);
                                                                 puanid = "puan" +j;
                                                                 // alert(puanid);
-                                                                if (onay == "0") {
-                                                                    $('#cevaplar').append('<tr class="onayli"><td>' + sira + '</td><td id="maxpuan"><input class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td><td class="ap" id="aldigipuan" >' + aldigipuan + '</td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                if (onay == 0) {
+                                                                    $('#cevaplar').append('<tr ><td class="onaysiz">' + sira + '</td><td  id="maxpuan"><input class="op" style="width:70%;" name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="' + ogrencialdigipuan+'"></td><td class="ap" id="aldigipuan" >' + aldigipuan + '</td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
                                                                 }
                                                                 else {
-                                                                    $('#cevaplar').append('<tr class="onaysiz"><td>' + sira + '</td><td id="maxpuan"><input style="display:none;" class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="Puan"></td> <td class="ap" id="aldigipuan" >' + aldigipuan + '</td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
+                                                                    $('#cevaplar').append('<tr ><td class="onayli">' + sira + '</td><td id="maxpuan"><input style="display:none;" style="width:70%;" class="op"  name="puan" type="number" id=' + puanid + '  max=' + sorupuani + ' placeholder="' + ogrencialdigipuan +'"></td> <td class="ap" id="aldigipuan" >' + aldigipuan + '</td><td class="sp" id="sorupuaniii" >' + sorupuani + '</td><td style="display:none;">' + soruid + '</td><td style="display:none;">' + puanid + '</td></tr>');
                                                                 }
                                                                
                                                             }
@@ -241,7 +242,7 @@ function load() {
                                                             var tdss = document.getElementById('cevaplar').getElementsByTagName('td');
                                                             var sum1 = 0;
                                                             for (var i = 0; i < tdss.length; i++) {
-                                                                if (tdss[i].className == 'op') {
+                                                                if (tdss[i].className == 'ap') {
                                                                     sum1 += isNaN(tdss[i].innerHTML) ? 0 : parseInt(tdss[i].innerHTML);
 
                                                                 }

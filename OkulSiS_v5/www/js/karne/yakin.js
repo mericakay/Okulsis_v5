@@ -24,7 +24,7 @@ function load() {
     //menu başlangıç
     var gelendonem = 1;
  var headername = localStorage.getItem("headername");
-    document.getElementsByTagName("P")[0].innerHTML = headername;
+   // document.getElementsByTagName("P")[0].innerHTML = headername;
     try {
         var menuid = "#menuid";
         $.ajax({

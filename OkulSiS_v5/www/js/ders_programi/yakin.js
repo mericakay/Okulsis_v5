@@ -23,7 +23,7 @@ function load() {
     var did = localStorage.getItem("did");
     var gelendonem = localStorage.getItem("donemID");
     var headername = localStorage.getItem("headername");
-    document.getElementsByTagName("P")[0].innerHTML = headername;
+    //document.getElementsByTagName("P")[0].innerHTML = headername;
 
     try {
         var menuid = "#menuid";

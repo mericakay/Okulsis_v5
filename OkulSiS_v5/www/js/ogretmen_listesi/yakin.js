@@ -24,7 +24,7 @@ function load() {
     var cid = localStorage.getItem("cid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
  var headername = localStorage.getItem("headername");
-    document.getElementsByTagName("P")[0].innerHTML = headername;
+ //   document.getElementsByTagName("P")[0].innerHTML = headername;
 
 
     //menu başlangıç

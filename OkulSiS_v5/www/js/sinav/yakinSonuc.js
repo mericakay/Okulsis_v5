@@ -24,7 +24,7 @@ function load() {
     var cid = localStorage.getItem("cid");
     var egitimyiliid = localStorage.getItem("egitimyiliid");
  var headername = localStorage.getItem("headername");
-    document.getElementsByTagName("P")[0].innerHTML = headername;
+    //document.getElementsByTagName("P")[0].innerHTML = headername;
 
     var ogrenciidselected = "";
     //menu başlangıç
@@ -204,9 +204,32 @@ function load() {
                                            var cell = row.getElementsByTagName("td")[2];
 
                                            var id = cell.innerHTML;
-                                           localStorage.setItem("secilensinavid", id);
+                                           try {
+                                             //  var secilensinavid = localStorage.getItem("secilensinavid");
+                                               // alert(secilenogrenciid);
+                                               $.ajax({
+                                                   url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + ogrenciidselected + '&sinavID=' + id + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
+                                                   type: 'GET',
+                                                   dataType: 'json',
+                                                   success: function (data) {
+                                                       var j;
+                                                       var dataSet = [];
+                                                       var properties = [];
+                                                       //$('#location').empty();
+                                                       for (var j = 0; j < data.length; j++) {
 
-                                           // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
+                                                           var proad = data[j].proad;
+
+                                                           localStorage.setItem("proad", proad);
+                                                           window.location.href = "../rapor.html";
+                                                       }
+
+
+                                                   }
+                                               });
+                                           } catch (e) {
+                                               alert(e);
+                                           }
                                        };
                                    };
 
@@ -214,32 +237,7 @@ function load() {
                            }
 
 
-                           try {
-                               var secilensinavid = localStorage.getItem("secilensinavid");
-                               // alert(secilenogrenciid);
-                               $.ajax({
-                                   url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + ogrenciidselected + '&sinavID=' + secilensinavid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
-                                   type: 'GET',
-                                   dataType: 'json',
-                                   success: function (data) {
-                                       var j;
-                                       var dataSet = [];
-                                       var properties = [];
-                                       //$('#location').empty();
-                                       for (var j = 0; j < data.length; j++) {
-
-                                           var proad = data[j].proad;
-
-                                           localStorage.setItem("proad", proad);
-                                           window.location.href = "../rapor.html";
-                                       }
-
-
-                                   }
-                               });
-                           } catch (e) {
-                               alert(e);
-                           }
+                          
 
 
                        });
@@ -281,9 +279,32 @@ function load() {
                                            var cell = row.getElementsByTagName("td")[2];
 
                                            var id = cell.innerHTML;
-                                           localStorage.setItem("secilensinavid", id);
+                                           try {
+                                              // var secilensinavid = localStorage.getItem("secilensinavid");
+                                               // alert(secilenogrenciid);
+                                               $.ajax({
+                                                   url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + ogrenciidselected + '&sinavID=' + id + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
+                                                   type: 'GET',
+                                                   dataType: 'json',
+                                                   success: function (data) {
+                                                       var j;
+                                                       var dataSet = [];
+                                                       var properties = [];
+                                                       //$('#location').empty();
+                                                       for (var j = 0; j < data.length; j++) {
 
-                                           // alert("<OgrenciID>" + id + "</OgrenciID>" + "<DevamsizlikKodID>" + gelen + "</DevamsizlikKodID>");
+                                                           var proad = data[j].proad;
+
+                                                           localStorage.setItem("proad", proad);
+                                                           window.location.href = "../rapor.html";
+                                                       }
+
+
+                                                   }
+                                               });
+                                           } catch (e) {
+                                               alert(e);
+                                           }
                                        };
                                    };
 
@@ -291,32 +312,7 @@ function load() {
                            }
 
 
-                           try {
-                               var secilensinavid = localStorage.getItem("secilensinavid");
-                               // alert(secilenogrenciid);
-                               $.ajax({
-                                   url: 'http://' + ip + '/Slim_Proxy_okulsis/SlimProxyBoot.php?url=OgrenciSinavDetayRpt_mbllogin&ogrenciID=' + ogrenciidselected+ '&sinavID=' + secilensinavid + '&lid=' + lid + '&cid=' + cid + '&did=' + did + '',
-                                   type: 'GET',
-                                   dataType: 'json',
-                                   success: function (data) {
-                                       var j;
-                                       var dataSet = [];
-                                       var properties = [];
-                                       //$('#location').empty();
-                                       for (var j = 0; j < data.length; j++) {
-
-                                           var proad = data[j].proad;
-
-                                           localStorage.setItem("proad", proad);
-                                           window.location.href = "../rapor.html";
-                                       }
-
-
-                                   }
-                               });
-                           } catch (e) {
-                               alert(e);
-                           }
+                          
 
 
                        });
